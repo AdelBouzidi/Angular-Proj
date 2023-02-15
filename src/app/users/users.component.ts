@@ -9,6 +9,7 @@ export class UsersComponent implements OnInit{
   userName: string='';
   compteur: number=-1; 
   usersList:string [] = [];
+  name:string='Leela Name';
   constructor() {}
   ngOnInit(): void {
   }
@@ -16,4 +17,8 @@ export class UsersComponent implements OnInit{
     this.usersList.push(a);
     this.compteur++;
   }
+  onNameChanged(){
+    this.name='Hai Leela Name';
+  }
+
 }
