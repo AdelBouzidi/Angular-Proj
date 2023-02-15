@@ -6,7 +6,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./add-user.component.css']
 })
 export class AddUserComponent implements OnInit {
-  userName: string='';
+  //userName: string='';
   usersList: string[] = [];
   @Output() userAdded = new EventEmitter<string>();
 
@@ -16,8 +16,9 @@ export class AddUserComponent implements OnInit {
   constructor() {  
   }
 
-  OnUserAdded(){
-    this.userAdded.emit(this.userName);
+  OnUserAdded(input: HTMLInputElement){
+    //this.userAdded.emit(this.userName);
+    this.userAdded.emit(input.value);
   }
 
 }

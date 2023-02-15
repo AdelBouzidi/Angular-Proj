@@ -1,8 +1,8 @@
 <div class="form-group">
     <h3>Add User</h3>
     <label>User Name :</label>
-    <input type="text" class="form-control" [(ngModel)]="userName"/> 
+    <input type="text" class="form-control" #Userinput/> 
     <div class="mt-2">
-        <button class="btn btn-primary" (click)="OnUserAdded()">Add User</button>
+        <button class="btn btn-primary" (click)="OnUserAdded(Userinput)">Add User</button>
     </div>
 </div>
