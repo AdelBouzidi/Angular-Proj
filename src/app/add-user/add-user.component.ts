@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-add-user',
@@ -9,6 +9,8 @@ export class AddUserComponent implements OnInit {
   //userName: string='';
   usersList: string[] = [];
   @Output() userAdded = new EventEmitter<string>();
+  @ViewChild('userInput')
+  userInput!: ElementRef;
 
   ngOnInit(): void {
   }
@@ -16,9 +18,11 @@ export class AddUserComponent implements OnInit {
   constructor() {  
   }
 
-  OnUserAdded(input: HTMLInputElement){
+  OnUserAdded(){
     //this.userAdded.emit(this.userName);
-    this.userAdded.emit(input.value);
+    console.log(this.userInput);
+    // this.userAdded.emit(input.value);
+    this.userAdded.emit(this.userInput.nativeElement.value);
   }
 
 }
