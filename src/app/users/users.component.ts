@@ -20,5 +20,8 @@ export class UsersComponent implements OnInit{
   onNameChanged(){
     this.name='Hai Leela Name';
   }
+  OnDeleteComponent(){
+    this.usersList = [];
+  }
 
 }
