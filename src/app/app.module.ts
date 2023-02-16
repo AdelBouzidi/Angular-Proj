@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UserComponent } from './user/user.component';
 import { HighlightTextDirective } from './Directives/HighlightText.directive';
-
+import { RendererHighlightDirective } from './Directives/renderer-highlight.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,6 +15,7 @@ import { HighlightTextDirective } from './Directives/HighlightText.directive';
     AddUserComponent,
     UserComponent,
     HighlightTextDirective,
+    RendererHighlightDirective,
   ],
   imports: [
     BrowserModule,FormsModule
