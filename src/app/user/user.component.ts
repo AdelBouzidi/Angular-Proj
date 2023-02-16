@@ -1,4 +1,4 @@
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, ContentChild, DoCheck, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -8,6 +8,8 @@ import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit,
 export class UserComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
 @Input() userName:string='';
 @Input() name:string='';  
+@ContentChild('userParagraph')
+userParagraph!: ElementRef;
   constructor(){
     console.log('constructor called');
   }
@@ -21,6 +23,7 @@ export class UserComponent implements OnInit, OnChanges, DoCheck, AfterContentIn
   
   ngOnInit(): void {
     console.log('ngOnInit called');
+    console.log(this.userParagraph);
   }
 
   ngDoCheck(): void {
@@ -29,6 +32,9 @@ export class UserComponent implements OnInit, OnChanges, DoCheck, AfterContentIn
 
   ngAfterContentInit(): void {
     console.log('ngAfterContentinit is called');
+    console.log(this.userParagraph.nativeElement.innerText);
+    // console.log(this.userParagraph.nativeElement.textContent); hoa mchatlo b hadi w ana b li fou9ha ok
+
   }
 
   ngAfterContentChecked(): void {

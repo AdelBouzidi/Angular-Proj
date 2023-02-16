@@ -3,13 +3,13 @@
 <div class="mt-3">
     <h3>Users List :</h3>
     <button class="btn btn-primary" (click)="onNameChanged()">Change Name</button>
-    <!-- pour exprimmer la méthode ngOnDestroy on va creer un button qui supprime la component user :-->
+    <!-- pour expliquer la méthode ngOnDestroy on va creer un button qui supprime la component user :-->
     <button class="btn btn-danger" (click)="OnDeleteComponent()">
         Delete Component
     </button>
     <app-user *ngFor="let user of usersList" [userName]="user" [name]="name">
-        <div>Username : {{user}}</div>
-        <!-- <div>Name : {{name}}</div> -->
+        <div #userParagraph>Username : {{user}}</div> 
+        <!-- ki tekteb hna haja w tdir f user html le selector ng-content ca fait wech dert hna chghol rak drtou f user, donc hada le reference #userparagraph n9drou nutilisiwh f user ts ok -->
     </app-user> 
     <!--Ou bien: 
     <app-user *ngFor="let user of usersList" [XXXX]="user"></app-user> avec:(voir la ligne 10 dans user-component.ts) --> 
