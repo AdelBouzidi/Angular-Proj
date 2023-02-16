@@ -20,5 +20,13 @@
     <!-- vvvvvvvvv -->
 </div>
 
-<!-- eeeeeeee -->
-<!-- errorrrrrrrrrrrrrrrrrrrrrrrrrrrrr -->
+<!-- ngstyle kona ndirouha b la méthode hadi: -->
+<div [ngStyle]="{'Background-color':'green'}">
+    Please Add The Background Color Red
+</div>
+<!-- en utilisant Directives ndirou hakda: -->
+<!-- <div> -->
+    <!-- <AppHighlightText> Please Add The Background Color Red</AppHighlightText> -->
+<!-- </div>  -->
+<!-- on a utilisé AppHighlightText as an element parceque selector ta3 la page ts AppHighlightText jay hakda :  selector: 'AppHighlightText', sinon kona 9adrin nutilisiweh ass attribute f hadak le cas nesta3mlouh hakda par ex: <div AppHighlightText>>Please Add The Background Color Red</div> w kayn thani w name class... -->
+<div AppHighlightText>Please Add The Background Color Red</div>  <!-- as an attribute not as an element -->
