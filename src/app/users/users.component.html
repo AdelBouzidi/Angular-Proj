@@ -36,8 +36,13 @@
 <!-- ou bien2 : -->
 <!-- <div appRendererHighlight appRendererHighlight="blue" hightlightColor="orange">Please Add The Background Color green</div> as an attribute not as an element -->
 
+
+<div>
+    <button class="btn btn-warning" (click)="isAvailable= !isAvailable">Toggle condition</button>
+</div>
+
 <div *ngIf="isAvailable">Show the div when isAvailable is true</div> 
-<!-- ou bien -->
+<!-- ou bien : (en réalité li lfou9 teconverta w tarja3 haka :)-->
 <ng-template [ngIf]="isAvailable">
     <div>Show the div when isAvailable is true</div>
 </ng-template>
@@ -50,5 +55,10 @@ men hadi :
     <div>Show the div when isAvailable is true</div>
 </ng-template>
 n9drou nafhmou beli ngIf hia une page directive li rah ndiroulha appel b le nom ta3ha ngIf w nmdoulha comme parametre :
-[ngIf]="isAvailable" mais bech nkhtasrou nktbouha hakda : <div *ngIf="isAvailable">Show the div when isAvailable is true</div>  -->
-
+[ngIf]="isAvailable" mais bech nkhtasrou nktbouha hakda : <div *ngIf="isAvailable">Show the div when isAvailable is true</div>  
+-->
+ 
+<!-- on va créer directive de condition personalisé (appAlternateIf): -->
+<div *appAlternateIf="isAvailable">
+    this condition enables with cutome directive
+</div> 
