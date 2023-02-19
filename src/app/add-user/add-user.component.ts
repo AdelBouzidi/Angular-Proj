@@ -20,9 +20,11 @@ export class AddUserComponent implements OnInit {
 
   OnUserAdded(){
     //this.userAdded.emit(this.userName);
-    console.log(this.userInput);
     // this.userAdded.emit(input.value);
     this.userAdded.emit(this.userInput.nativeElement.value);
+    //log to database make a post call fro ex
+    console.log('user is added : '+this.userInput.nativeElement.value);
+
   }
 
 }

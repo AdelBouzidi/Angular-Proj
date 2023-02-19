@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoggingService } from '../services/logging.service';
 
 @Component({
   selector: 'app-users',
@@ -22,6 +23,9 @@ export class UsersComponent implements OnInit{
   }
   onNameChanged(){
     this.name='Hai Leela Name';
+    // console.log('name changed :'+this.name) au lieu d'utiliser cette instruction on va utiliser le service logging
+    let loggingService = new LoggingService;
+    loggingService.LogToConsole('user is changed '+ this.name);
   }
   OnDeleteComponent(){
     this.usersList = [];

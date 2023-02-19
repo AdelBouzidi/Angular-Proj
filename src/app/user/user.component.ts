@@ -11,45 +11,45 @@ export class UserComponent implements OnInit, OnChanges, DoCheck, AfterContentIn
 @ContentChild('userParagraph')
 userParagraph!: ElementRef;
   constructor(){
-    console.log('constructor called');
+    //console.log('constructor called');
   }
   
   ngOnChanges(element: SimpleChanges): void {
-    console.log('ngOnChanges is called');
+    //console.log('ngOnChanges is called');
     //console.log('La valeur de (userName) a changé à',element['userName'].currentValue);
     //console.log('La valeur de (name) a changé à',element['name'].currentValue);
-    console.log(element);
+    //console.log(element);
   }
   
   ngOnInit(): void {
-    console.log('ngOnInit called');
-    console.log(this.userParagraph);
+    //console.log('ngOnInit called');
+    //console.log(this.userParagraph);
   }
 
   ngDoCheck(): void {
-    console.log('ngDoCheck is called');
+    //console.log('ngDoCheck is called');
   }
 
   ngAfterContentInit(): void {
-    console.log('ngAfterContentinit is called');
-    console.log(this.userParagraph.nativeElement.innerText);
+    //console.log('ngAfterContentinit is called');
+    //console.log(this.userParagraph.nativeElement.innerText);
     // console.log(this.userParagraph.nativeElement.textContent); hoa mchatlo b hadi w ana b li fou9ha ok
 
   }
 
   ngAfterContentChecked(): void {
-    console.log('afterContentChecked is called');
+    //console.log('afterContentChecked is called');
   }
 
   ngAfterViewChecked(): void {
-    console.log('ngAfterViewChecked is called');
+    //console.log('ngAfterViewChecked is called');
   }
 
   ngAfterViewInit(): void {
-    console.log('ngAfterViewInit is called');
+    //console.log('ngAfterViewInit is called');
   }
 
   ngOnDestroy(): void {
-    console.log('ngOnDestroy is called');
+    //console.log('ngOnDestroy is called');
   }
 }
