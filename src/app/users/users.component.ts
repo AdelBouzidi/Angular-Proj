@@ -11,7 +11,8 @@ export class UsersComponent implements OnInit{
   usersList:string [] = [];
   name:string='Leela Name';
   isAvailable:boolean = true;
-  
+  value = 20;
+
   constructor() {}
   ngOnInit(): void {
   }

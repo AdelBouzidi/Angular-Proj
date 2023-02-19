@@ -62,3 +62,9 @@ n9drou nafhmou beli ngIf hia une page directive li rah ndiroulha appel b le nom 
 <div *appAlternateIf="isAvailable">
     this condition enables with cutome directive
 </div> 
+
+<div [ngSwitch]="value">
+    <div *ngSwitchCase="10">Value is 10</div>
+    <div *ngSwitchCase="15">Value is 15</div>
+    <div *ngSwitchDefault>Value is default</div>
+</div>
