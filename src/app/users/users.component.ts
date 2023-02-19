@@ -10,6 +10,8 @@ export class UsersComponent implements OnInit{
   compteur: number=-1; 
   usersList:string [] = [];
   name:string='Leela Name';
+  isAvailable:boolean = true;
+  
   constructor() {}
   ngOnInit(): void {
   }

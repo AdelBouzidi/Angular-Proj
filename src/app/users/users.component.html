@@ -36,3 +36,19 @@
 <!-- ou bien2 : -->
 <!-- <div appRendererHighlight appRendererHighlight="blue" hightlightColor="orange">Please Add The Background Color green</div> as an attribute not as an element -->
 
+<div *ngIf="isAvailable">Show the div when isAvailable is true</div> 
+<!-- ou bien -->
+<ng-template [ngIf]="isAvailable">
+    <div>Show the div when isAvailable is true</div>
+</ng-template>
+<!-- remarquer que ki ndirou l'appel l directive yla madina le nom ta3o comme un nom de parametre kima hna 
+<div appRendererHighlight [appRendererHighlight]="'blue'"....... n9drou nahiw le nom de directive  tab9a tmchi c_t_à dire meme 
+hakda tmchi: 
+<div [appRendererHighlight]="'blue'" [hightlightColor]="'orange'">Please Add The Background Color green</div>, donc 
+men hadi :
+<ng-template [ngIf]="isAvailable">
+    <div>Show the div when isAvailable is true</div>
+</ng-template>
+n9drou nafhmou beli ngIf hia une page directive li rah ndiroulha appel b le nom ta3ha ngIf w nmdoulha comme parametre :
+[ngIf]="isAvailable" mais bech nkhtasrou nktbouha hakda : <div *ngIf="isAvailable">Show the div when isAvailable is true</div>  -->
+
