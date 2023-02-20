@@ -1,56 +1,23 @@
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, ContentChild, DoCheck, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { LoggingService } from '../services/logging.service';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  styleUrls: ['./user.component.css'],
+  providers:[UserService],
 })
-export class UserComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
-@Input() userName:string='';
-@Input() name:string='';  
-@ContentChild('userParagraph')
-userParagraph!: ElementRef;
-  constructor(){
-    //console.log('constructor called');
+export class UserComponent implements OnInit{
+  @Input() user: { name: string; status: string; } | undefined;
+  @Input() id:number | any;
+  constructor(private userService: UserService) {    
   }
-  
-  ngOnChanges(element: SimpleChanges): void {
-    //console.log('ngOnChanges is called');
-    //console.log('La valeur de (userName) a changé à',element['userName'].currentValue);
-    //console.log('La valeur de (name) a changé à',element['name'].currentValue);
-    //console.log(element);
-  }
-  
+
   ngOnInit(): void {
-    //console.log('ngOnInit called');
-    //console.log(this.userParagraph);
   }
 
-  ngDoCheck(): void {
-    //console.log('ngDoCheck is called');
+  onUpdateStatus(status: string){
+    this.userService.UpdateStatus(this.id, status);
   }
 
-  ngAfterContentInit(): void {
-    //console.log('ngAfterContentinit is called');
-    //console.log(this.userParagraph.nativeElement.innerText);
-    // console.log(this.userParagraph.nativeElement.textContent); hoa mchatlo b hadi w ana b li fou9ha ok
-
-  }
-
-  ngAfterContentChecked(): void {
-    //console.log('afterContentChecked is called');
-  }
-
-  ngAfterViewChecked(): void {
-    //console.log('ngAfterViewChecked is called');
-  }
-
-  ngAfterViewInit(): void {
-    //console.log('ngAfterViewInit is called');
-  }
-
-  ngOnDestroy(): void {
-    //console.log('ngOnDestroy is called');
-  }
 }
