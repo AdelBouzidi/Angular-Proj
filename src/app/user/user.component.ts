@@ -5,7 +5,7 @@ import { UserService } from '../services/user.service';
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css'],
-  providers:[UserService],
+  // providers:[UserService],
 })
 export class UserComponent implements OnInit{
   @Input() user: { name: string; status: string; } | undefined;

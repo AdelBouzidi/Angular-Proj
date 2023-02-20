@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     UserComponent,
-    AddUserComponent
+    AddUserComponent,
   ],
   imports: [
     BrowserModule,FormsModule
