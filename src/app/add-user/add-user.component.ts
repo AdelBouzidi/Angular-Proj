@@ -11,11 +11,17 @@ export class AddUserComponent implements OnInit{
   userName:string ='';
 
   
-  ngOnInit(): void {
-  } 
+  
 
   constructor(private userService : UserService) {    
   }
+
+  ngOnInit(): void {
+    this.userService.statusUpdated.subscribe(data => {
+      alert(data);
+    });
+  } 
+
   onAddUser(){
     this.userService.addUser(this.userName, 'active');
   }

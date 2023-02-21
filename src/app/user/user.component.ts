@@ -18,6 +18,7 @@ export class UserComponent implements OnInit{
 
   onUpdateStatus(status: string){
     this.userService.UpdateStatus(this.id, status);
+    this.userService.statusUpdated.emit(status);
   }
 
 }
