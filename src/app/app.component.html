@@ -3,9 +3,20 @@
   <div class="row">
     <div class="col-md-3">
       <ul class="nav flex-column">
-        <li class="nav-item"> <a href="/">Home</a> </li>
+        <!-- Création de liens : -->
+        <!-- <li class="nav-item"> <a href="/">Home</a> </li>
         <li class="nav-item"> <a href="/users">Users</a> </li>
-        <li class="nav-item"> <a href="/categories">Categories</a> </li>
+        <li class="nav-item"> <a href="/categories">Categories</a> </li> -->
+        <!-- : En utilisant des liens natifs <a href="/search">, le "browser" va produire une requête HTTP GET vers le serveur et recharger 
+        toute l'application. Pour éviter ce problème, le module de "Routing" Angular fournit la Directive routerLink qui permet 
+        d'intercepter l'événement click sur les liens et de changer de "route" sans recharger toute l'application. -->
+      
+        <!-- <li class="nav-item"> <a routerLink="/">Home</a> </li>  -->
+        <!-- ou bien: -->
+         <li class="nav-item"> <a [routerLink]="['/']">Home</a> </li> <!--as an parametre to the directive routerLink -->
+        
+        <li class="nav-item"> <a routerLink="/users">Users</a> </li>
+        <li class="nav-item"> <a [routerLink]="['/categories']">Categories</a> </li>
       </ul>
     </div>
     <div class="col-md-9">
@@ -14,7 +25,8 @@
           <!-- <app-home></app-home>
           <app-users></app-users>
           <app-categories></app-categories> -->
-          <router-outlet></router-outlet>
+          <router-outlet></router-outlet> 
+          <!-- : Pour indiquer l'emplacement d'insertion du composant, il faut utiliser la directive <router-outlet> directement dans le "root component" AppComponent -->
         </div>
       </div>
     </div>
