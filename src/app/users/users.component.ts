@@ -7,9 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit{
-  ngOnInit(): void {
+    ngOnInit(): void {
   }
-  id=10;
   constructor(private router: Router) {    
   }
 
