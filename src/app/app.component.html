@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <ul class="nav flex-column">
+      <ul class="nav flex-column nav-pills">
         <!-- Création de liens : -->
         <!-- <li class="nav-item"> <a href="/">Home</a> </li>
         <li class="nav-item"> <a href="/users">Users</a> </li>
@@ -13,13 +13,23 @@
       
         <!-- <li class="nav-item"> <a routerLink="/">Home</a> </li>  -->
         <!-- ou bien: -->
-         <li class="nav-item"> <a [routerLink]="['/']">Home</a> </li> <!--as an parametre to the directive routerLink -->
+         <li class="nav-item "> 
+          <a 
+          class="nav-link" [routerLink]="['/']" 
+          routerLinkActive="active" 
+          [routerLinkActiveOptions]="{exact: true}" 
+          >Home
+          </a> 
         
-        <li class="nav-item"> <a routerLink="/users">Users</a> </li>
-        <li class="nav-item"> <a [routerLink]="['/categories']">Categories</a> </li>
+        </li> <!--as an parametre to the directive routerLink -->
+        <!-- [routerLinkActiveOptions]="{exact: true}" : ç-à-dire home tedi la couleur blue ki ykoun tale3 f navigateur this link http://localhost:4200/ exactely 
+          not http://localhost:4200/user ou http://localhost:4200/categories -->
+       
+          <li class="nav-item"> <a class="nav-link" routerLink="/users" routerLinkActive="active">Users</a> </li>
+        <li class="nav-item"> <a class="nav-link" [routerLink]="['/categories']" routerLinkActive="active">Categories</a> </li>
       </ul>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9"> 
       <div class="row">
         <div class="col-md-12"> 
           <!-- <app-home></app-home>
