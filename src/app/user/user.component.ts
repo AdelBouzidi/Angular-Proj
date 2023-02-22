@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -9,7 +9,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class UserComponent implements OnInit{
   user: { id: string; name: string; } | any; 
     
-  constructor(private route: ActivatedRoute) {    
+  constructor(private route: ActivatedRoute, private router : Router) {    
   }
   //ActivatedRoute : ActivatedRoute = la route actuelle
   // ma3naha kayn un lien li rah mowafi9 l une component f routing w rah nab3thou bih des 
@@ -27,6 +27,10 @@ export class UserComponent implements OnInit{
         name: data['name'],
       }
     });
+  }
+
+  getRamaDetails(){
+    this.router.navigate(['/users', 2, 'Rama'], {queryParams : {page : 1, search : 'leela'}});
   }
 
  
