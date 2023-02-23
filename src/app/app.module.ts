@@ -10,9 +10,14 @@ import { UserComponent } from './user/user.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent}, //localhost;4200/
-  {path: 'users', component: UsersComponent},
-  {path: 'users/:id/:name', component:UserComponent},
+  {path: 'users', 
+  component: UsersComponent,
+  children: [{path: ':id/:name', component: UserComponent}]
+  },
+  // {path: 'users/:id/:name', component:UserComponent},
   {path: 'categories', component: CategoriesComponent},
+  
+  {path: 'user', component: UserComponent}
 ];
 
 @NgModule({
@@ -24,7 +29,7 @@ const appRoutes: Routes = [
     UserComponent
   ],
   imports: [
-    BrowserModule, RouterModule.forRoot(appRoutes)
+    BrowserModule, RouterModule.forRoot(appRoutes),
   ],
   providers: [],
   bootstrap: [AppComponent]

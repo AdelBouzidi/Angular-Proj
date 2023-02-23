@@ -27,7 +27,18 @@ export class UserComponent implements OnInit{
         name: data['name'],
       }
     });
-  }
+    // console.log(this.route.snapshot.queryParams);
+    // console.log(this.route.snapshot.fragment); 30/31 ou bian 33/38;
+
+    this.route.queryParams.subscribe(data => {
+      console.log(data); //hakda nafichou fel console ge3 wel yatla3 f lien 
+    });
+    this.route.fragment.subscribe(data => {
+      console.log(data); //hakda nafichou fel console ge3 wel yatla3 f lien 
+    });
+
+  } // men la ligne 24 ====>38 comme ça on peut récupirer tous ce qui est dans la route actuelle (activated route) (parametre and 
+    // query parametres and fragment.)
 
   getRamaDetails(){
     this.router.navigate(['/users', 2, 'Rama'], {queryParams : {page : 1, search : 'leela'}});

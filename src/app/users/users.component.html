@@ -1,6 +1,29 @@
-<p>users works!</p>
+<!-- <p>users works!</p> -->
 
+<!-- <div> -->
+    <!-- <a routerLink="/categories"> Got To Categires </a> , ou bien :--> 
+    <!-- <button (click)="onCategoriesClick()"> Got To Categires </button> -->
+<!-- </div> -->
+
+<!-- <a  -->
+<!-- [routerLink]="['/users', 1, 'leela']" -->
+<!-- [queryParams]="{page : 1, search: 'leela'}" -->
+<!-- [fragment]="'loading'"> -->
+<!-- Get Leela Details -->
+<!-- </a> -->
+
+<ul class="nav flex-column">
+    <li class="nav-item">
+        <a [routerLink]="['/users', 1, 'Rama']" class="nav-link">Get Rama Détails</a> 
+    </li>
+    <li>
+        <a [routerLink]="['/users', 1, 'Krishna']" class="nav-link">Get Krishna Détails</a>
+    </li>
+    <li>
+        <a [routerLink]="['/users', 1, 'Leela']" class="nav-link">Get Leela Détails</a>
+    </li>
+    
+</ul>
 <div>
-    <!-- <a routerLink="/categories"> <button class="btn btn-primary">Got To Categires</button></a> -->
-    <button (click)="onCategoriesClick()"> Got To Categires </button>
+    <router-outlet></router-outlet>
 </div>
