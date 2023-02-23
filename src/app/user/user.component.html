@@ -4,22 +4,24 @@
     <div>user with name is {{user.name}}</div>
 </div>
 
-<div>
+<!-- <div>
     <a 
     [routerLink]="['/users', 1, 'leela']"
     [queryParams]="{page : 1, search : 'leela'}"  
     [fragment]="'load'"
     >Get Details of Leela</a>
 </div>
-
-<!-- [queryParams]="{page : 1, search : 'leela'}" :en utilisant ce directive sepecial si on click sur get details of leela yatla3 lien hada f 
+<--
+[queryParams]="{page : 1, search : 'leela'}" :en utilisant ce directive sepecial si on click sur get details of leela yatla3 lien hada f 
 navigateur: http://localhost:4200/users/1/leela?page=1&search=leela -->
 
-<div>
+<!-- <div>
     <button (click)="getRamaDetails()">Get Rama Détails</button>
+</div>  -->
+
+<div>
+    <button (click)="onUserEdit()">Edit User</button>
 </div>
-
-
    
 
 

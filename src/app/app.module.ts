@@ -7,12 +7,15 @@ import { UsersComponent } from './users/users.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UserComponent } from './user/user.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent}, //localhost;4200/
   {path: 'users', 
   component: UsersComponent,
-  children: [{path: ':id/:name', component: UserComponent}]
+  children: [{path: ':id/:name', component: UserComponent},
+  {path: ':id/:name/edit', component: EditUserComponent}],
+  
   },
   // {path: 'users/:id/:name', component:UserComponent},
   {path: 'categories', component: CategoriesComponent},
@@ -26,10 +29,11 @@ const appRoutes: Routes = [
     HomeComponent,
     UsersComponent,
     CategoriesComponent,
-    UserComponent
+    UserComponent,
+    EditUserComponent
   ],
   imports: [
-    BrowserModule, RouterModule.forRoot(appRoutes),
+    BrowserModule, RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

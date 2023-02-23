@@ -1,3 +1,4 @@
+import { query } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
@@ -44,6 +45,12 @@ export class UserComponent implements OnInit{
     this.router.navigate(['/users', 2, 'Rama'], {queryParams : {page : 1, search : 'leela'}});
   }
 
- 
-
+  onUserEdit(){
+    this.router.navigate(['/users',this.user.id, this.user.name, 'edit'],
+    {queryParamsHandling: 'preserve',
+    });
+  } 
+  // queryParamsHandling: 'preserve ou merge',
+  //ki tkoun rah trecupirer les params tdir : this.route.queryParams.subscribe mais ki nkounou rah nabe3thou ndirou 
+  //  {queryParams : {page : 1, search : 'leela'}} bsh bel handling khir 
 }
