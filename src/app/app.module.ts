@@ -8,19 +8,26 @@ import { CategoriesComponent } from './categories/categories.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UserComponent } from './user/user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent}, //localhost;4200/
+ 
   {path: 'users', 
   component: UsersComponent,
   children: [{path: ':id/:name', component: UserComponent},
   {path: ':id/:name/edit', component: EditUserComponent}],
-  
   },
+
   // {path: 'users/:id/:name', component:UserComponent},
   {path: 'categories', component: CategoriesComponent},
   
-  {path: 'user', component: UserComponent}
+  {path: 'user', component: UserComponent},
+  
+  // { path: '**', pathMatch: 'full',
+  // component: PageNotFoundComponent } ou bien
+  { path: 'not-found', component: PageNotFoundComponent},
+  { path: '**', redirectTo: 'not-found' }, //hadi toujours tkoun lekhra kamel f routage tdirha lfou9 yasra mochkil mafhmtouch
 ];
 
 @NgModule({
@@ -30,7 +37,8 @@ const appRoutes: Routes = [
     UsersComponent,
     CategoriesComponent,
     UserComponent,
-    EditUserComponent
+    EditUserComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule, RouterModule.forRoot(appRoutes)

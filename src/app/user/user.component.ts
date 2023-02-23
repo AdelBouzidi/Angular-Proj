@@ -51,6 +51,8 @@ export class UserComponent implements OnInit{
     });
   } 
   // queryParamsHandling: 'preserve ou merge',
+  // "merge" : Merge new parameters with current parameters.
+  // "preserve" : Preserve current parameters.
   //ki tkoun rah trecupirer les params tdir : this.route.queryParams.subscribe mais ki nkounou rah nabe3thou ndirou 
   //  {queryParams : {page : 1, search : 'leela'}} bsh bel handling khir 
 }
