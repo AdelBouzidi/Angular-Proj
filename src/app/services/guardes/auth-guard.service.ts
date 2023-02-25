@@ -8,7 +8,7 @@ import { AuthService } from "./auth.service";
 export class AuthGuardService implements CanActivate, CanActivateChild{
 
 constructor(private authService: AuthService, private router: Router) {}
-    // canActivateChild(
+    // canActivatechild(
     //     route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     //    let isLoggedIn = this.authService.isAuthenticated();
     //    if(isLoggedIn){

@@ -12,6 +12,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/guardes/auth.service';
 import { AuthGuardService } from './services/guardes/auth-guard.service';
+import { DeactivateGuardService } from './services/guardes/deactivat-guard.service';
 
 // const appRoutes: Routes = [
 //   {path: '', component: HomeComponent}, //localhost;4200/
@@ -46,7 +47,7 @@ import { AuthGuardService } from './services/guardes/auth-guard.service';
   imports: [
     BrowserModule, AppRoutingModule
   ],
-  providers: [AuthService, AuthGuardService],
+  providers: [AuthService, AuthGuardService, DeactivateGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
