@@ -10,7 +10,7 @@ import { UserComponent } from "./user/user.component";
 import { UsersComponent } from "./users/users.component";
 
 const appRoutes: Routes = [
-    {path: '', component: HomeComponent}, //localhost;4200/
+    {path: '', component: HomeComponent, data: {page:1, search: 'leela'}}, //localhost;4200/
    
     {path: 'users', 
     component: UsersComponent,
