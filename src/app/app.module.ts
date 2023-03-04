@@ -14,6 +14,8 @@ import { AuthService } from './services/guardes/auth.service';
 import { AuthGuardService } from './services/guardes/auth-guard.service';
 import { DeactivateGuardService } from './services/guardes/deactivat-guard.service';
 import { FormsModule } from '@angular/forms';
+import { userResolveService } from './services/resolvers/user-resolve.service';
+import { UserService } from './services/user.service';
 
 // const appRoutes: Routes = [
 //   {path: '', component: HomeComponent}, //localhost;4200/
@@ -48,7 +50,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule, AppRoutingModule, FormsModule
   ],
-  providers: [AuthService, AuthGuardService, DeactivateGuardService],
+  providers: [AuthService, AuthGuardService, DeactivateGuardService, userResolveService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
