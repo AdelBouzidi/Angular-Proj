@@ -7,6 +7,7 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
 import { AuthGuardService } from "./services/guardes/auth-guard.service";
 import { DeactivateGuardService } from "./services/guardes/deactivat-guard.service";
 import { userResolveService } from "./services/resolvers/user-resolve.service";
+import { TemplateFormComponent } from "./template-form/template-form.component";
 import { UserComponent } from "./user/user.component";
 import { UsersComponent } from "./users/users.component";
 
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
   
     // {path: 'users/:id/:name', component:UserComponent},
     {path: 'categories', component: CategoriesComponent },
+    {path: 'templateform', component: TemplateFormComponent },
     
     {path: 'user', component: UserComponent},
     

@@ -16,6 +16,7 @@ import { DeactivateGuardService } from './services/guardes/deactivat-guard.servi
 import { FormsModule } from '@angular/forms';
 import { userResolveService } from './services/resolvers/user-resolve.service';
 import { UserService } from './services/user.service';
+import { TemplateFormComponent } from './template-form/template-form.component';
 
 // const appRoutes: Routes = [
 //   {path: '', component: HomeComponent}, //localhost;4200/
@@ -45,7 +46,8 @@ import { UserService } from './services/user.service';
     CategoriesComponent,
     UserComponent,
     EditUserComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TemplateFormComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, FormsModule
