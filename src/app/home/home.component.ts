@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Data } from '@angular/router';
-import { interval, map, Observable, Subscription } from 'rxjs';
+import { filter, interval, map, Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit, OnDestroy{
     // })
 
     // custom observable :
-    let customObservable = Observable.create((observer:any) => {
+    let customObservable = Observable.create((observer: { next: (arg0: number) => void; error: (arg0: string) => void; complete: () => void; }) => {
       let count = 0;;
       setInterval(() => {
         observer.next(count); //it will send the data
@@ -39,10 +39,18 @@ export class HomeComponent implements OnInit, OnDestroy{
         count++;
       },1000);
     });
-    this.intervalSubsciption = customObservable.pipe(map((data:number) => {  
-      //loperator map it will take the data and it will manipulate it before sending to the observer subscribe
+
+
+    
+    this.intervalSubsciption = customObservable.pipe(filter((data:number) => {
+        if(data > 1){
+          return true;
+        }
+        return false;
+      }),map((data:number) => {  
+      //loperator map it will take the data and it will manipulate it before sending it to the observer subscribe
       // data = data + 1;
-      return 'count is : ' + (data + 1);
+      return 'count is : ' + data;
     })).subscribe((data: any) =>{ 
     console.log(data); 
     },(error: any) => { 
