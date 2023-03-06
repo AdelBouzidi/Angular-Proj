@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-users',
@@ -9,11 +10,14 @@ import { Router } from '@angular/router';
 export class UsersComponent implements OnInit{
     ngOnInit(): void {
   }
-  constructor(private router: Router) {    
+  constructor(private router: Router,private userService: UserService) {    
   }
 
   onCategoriesClick(){
     this.router.navigateByUrl('/categories');
     // ou bien :  this.router.navigate(['/categories',id, etc]); avec cette méthode on peut passer qlq autres choses!
+  }
+  onUserAddedClick(){
+    this.userService.addUser();
   }
 }
