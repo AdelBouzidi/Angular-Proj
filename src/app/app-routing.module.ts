@@ -36,7 +36,7 @@ const appRoutes: Routes = [
     { path: '**', redirectTo: 'not-found' }, //hadi toujours tkoun lekhra kamel f routage tdirha lfou9 yasra mochkil mafhmtouch
   ];
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes)],
+    imports: [RouterModule.forRoot(appRoutes, {useHash:true}) ],
     exports: [RouterModule],
 })
 export class AppRoutingModule{
