@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -12,6 +12,9 @@ export class ReactiveFormsComponent implements OnInit{
 
 
   constructor() {    
+  }
+  get HobbyControls(){
+    return (<FormArray>this.signUpForm.get('hobbies')).controls;
   }
   //without Grouping the Controls :
   // ngOnInit(): void {
@@ -35,12 +38,19 @@ export class ReactiveFormsComponent implements OnInit{
         'email': new FormControl(null, [Validators.required, Validators.email]), //form control 2
       }), 
      
-      'gender': new FormControl('female') //form control 3
+      'gender': new FormControl('female'), //form control 3
+      'hobbies': new FormArray([])//FormArray = list of form control
     })
   }//after defining the validators we need to define the error message:
 
   onSubmit(){
     console.log(this.signUpForm);
+  }
+
+  onAddHobby(){
+    //here wwe need to add dynamicly the form control 
+    const control = new FormControl(null, Validators.required);
+    (<FormArray>this.signUpForm.get('hobbies')).push(control);
   }
 
 
