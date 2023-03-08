@@ -1,0 +1,57 @@
+<div class="container">
+  
+  <div class="row">
+    <div class="col-md-12">
+      <button class="btn btn-primary" (click)="onLoginClick()" [ngStyle]="{'background-color':'red'}" type="submit">Login</button>
+      <button class="btn btn-primary" (click)="onLogoutClick()" [ngStyle]="{'background-color':'red'}" type="submit">Logout</button>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3">
+      <ul class="nav flex-column nav-pills">
+        <!-- Création de liens : -->
+        <!-- <li class="nav-item"> <a href="/">Home</a> </li>
+        <li class="nav-item"> <a href="/users">Users</a> </li>
+        <li class="nav-item"> <a href="/categories">Categories</a> </li> -->
+        <!-- : En utilisant des liens natifs <a href="/search">, le "browser" va produire une requête HTTP GET vers le serveur et recharger 
+        toute l'application. Pour éviter ce problème, le module de "Routing" Angular fournit la Directive routerLink qui permet 
+        d'intercepter l'événement click sur les liens et de changer de "route" sans recharger toute l'application. -->
+      
+        <!-- <li class="nav-item"> <a routerLink="/">Home</a> </li>  -->
+        <!-- ou bien: -->
+         <li class="nav-item "> 
+          <a 
+          class="nav-link" [routerLink]="['/']" 
+          routerLinkActive="active" 
+          [routerLinkActiveOptions]="{exact: true}" 
+          >Home
+          </a> 
+        
+        </li> <!--as an parametre to the directive routerLink -->
+        <!-- [routerLinkActiveOptions]="{exact: true}" : ç-à-dire home tedi la couleur blue ki ykoun tale3 f navigateur this link http://localhost:4200/ exactely 
+          not http://localhost:4200/user ou http://localhost:4200/categories -->
+       
+        <li class="nav-item"> <a class="nav-link" routerLink="/users" routerLinkActive="active">Users</a> </li>
+        <li class="nav-item"> <a class="nav-link" [routerLink]="['/categories']" routerLinkActive="active">Categories</a> </li>
+        <li class="nav-item"> <a class="nav-link" [routerLink]="['/templateform']" routerLinkActive="active">Template-Form</a> </li>
+      </ul>
+    </div>
+    <div class="col-md-9"> 
+      <div class="row">
+        <div class="col-md-12"> 
+
+              <!-- quand on click sur le button User Added qui se trouve dans users ce text va s'afficher en utilisant Subject RXjS : -->
+        <div *ngIf="userAdded">
+            User Added Button Click 
+        </div>
+          <!-- <app-home></app-home>
+          <app-users></app-users>
+          <app-categories></app-categories> -->
+          <router-outlet></router-outlet> 
+          <!-- : Pour indiquer l'emplacement d'insertion du composant, il faut utiliser la directive <router-outlet> directement dans le "root component" AppComponent -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
