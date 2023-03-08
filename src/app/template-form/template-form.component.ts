@@ -10,6 +10,14 @@ export class TemplateFormComponent implements OnInit{
   @ViewChild('f') signUpForm: NgForm | any;
   gender='male';
   about='';
+  submitted = false;
+  user = {
+    username: '',
+    email: '',
+    gender: '', 
+    about: ''
+  }
+
   ngOnInit(): void {
   }
   constructor() {    
@@ -26,7 +34,12 @@ export class TemplateFormComponent implements OnInit{
   // }  
   onFormSubmit(){
     console.log(this.signUpForm);
- 
+    this.submitted = true;
+    this.user.username = this.signUpForm.value.userData.username;
+    this.user.email = this.signUpForm.value.userData.email;
+    this.user.gender = this.signUpForm.value.gender;
+    this.user.about = this.signUpForm.value.about;
+    this.signUpForm.reset(); // ma3naha ki tdir submit yatba3thou les données w mayb9awch ybanou 
   } 
   // fillValues(){
   //   this.signUpForm.form.setValue({
