@@ -13,10 +13,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/guardes/auth.service';
 import { AuthGuardService } from './services/guardes/auth-guard.service';
 import { DeactivateGuardService } from './services/guardes/deactivat-guard.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { userResolveService } from './services/resolvers/user-resolve.service';
 import { UserService } from './services/user.service';
 import { TemplateFormComponent } from './template-form/template-form.component';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 
 // const appRoutes: Routes = [
 //   {path: '', component: HomeComponent}, //localhost;4200/
@@ -47,10 +48,11 @@ import { TemplateFormComponent } from './template-form/template-form.component';
     UserComponent,
     EditUserComponent,
     PageNotFoundComponent,
-    TemplateFormComponent
+    TemplateFormComponent,
+    ReactiveFormsComponent
   ],
   imports: [
-    BrowserModule, AppRoutingModule, FormsModule
+    BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule
   ],
   providers: [AuthService, AuthGuardService, DeactivateGuardService, userResolveService, UserService],
   bootstrap: [AppComponent]

@@ -4,6 +4,7 @@ import { CategoriesComponent } from "./categories/categories.component";
 import { EditUserComponent } from "./edit-user/edit-user.component";
 import { HomeComponent } from "./home/home.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { ReactiveFormsComponent } from "./reactive-forms/reactive-forms.component";
 import { AuthGuardService } from "./services/guardes/auth-guard.service";
 import { DeactivateGuardService } from "./services/guardes/deactivat-guard.service";
 import { userResolveService } from "./services/resolvers/user-resolve.service";
@@ -29,7 +30,7 @@ const appRoutes: Routes = [
     // {path: 'users/:id/:name', component:UserComponent},
     {path: 'categories', component: CategoriesComponent },
     {path: 'templateform', component: TemplateFormComponent },
-    
+    {path: 'reactiveform', component: ReactiveFormsComponent },
     {path: 'user', component: UserComponent},
     
     // { path: '**', pathMatch: 'full',
