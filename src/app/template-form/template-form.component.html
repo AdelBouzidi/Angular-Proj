@@ -6,6 +6,8 @@
                
                 <!-- <div *ngIf="!userData.valid && email.touched && username.touched">User Data is Invalid </div>    me-->
                 <!-- <div *ngIf="!userData.valid && userData.touched && userData.value.email">User Data is Invalid </div> -->
+
+                <button class="btn btn-sm  btn-info" (click)="fillValues()">Fill Values</button>
                 <div *ngIf="!userData.valid && userData.touched">User Data is Invalid </div>
                 <div ngModelGroup="userData" #userData="ngModelGroup">
                     <div class="form-group">

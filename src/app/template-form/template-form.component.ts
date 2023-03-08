@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
 export class TemplateFormComponent implements OnInit{
   @ViewChild('f') signUpForm: NgForm | any;
   gender='male';
-  about='my name id adel';
+  about='';
   ngOnInit(): void {
   }
   constructor() {    
@@ -28,6 +28,27 @@ export class TemplateFormComponent implements OnInit{
     console.log(this.signUpForm);
  
   } 
+  // fillValues(){
+  //   this.signUpForm.form.setValue({
+  //     userData: {
+  //       email: 'bouzidi.ci@gmail.com',
+  //       username: 'Adel'
+  //     },
+  //      gender:'male',
+  //      about:'About Us'
+  //   });
+  // }
+  fillValues(){
+    this.signUpForm.form.patchValue({
+      userData: {
+        email: 'bouzidi.ci@gmail.com',
+        username: 'Adel'
+      },
+      //  gender:'male',
+      //  about:'About Us'
+    });
+  }
+
   
 
 }
