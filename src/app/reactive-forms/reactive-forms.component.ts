@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, RequiredValidator, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -9,6 +9,8 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 export class ReactiveFormsComponent implements OnInit{
   genders = ['male', 'female'];
   signUpForm: FormGroup | any;
+  restictedNames = ['Leela','Adel'];
+
 
 
   constructor() {    
@@ -33,7 +35,7 @@ export class ReactiveFormsComponent implements OnInit{
     this.signUpForm = new FormGroup({
       // 'userData': new FormGroup({}), : is the first thing to do for Grouping the Controls in the Reactive Forms using FormGroupName in FormGroup
       'userData': new FormGroup({
-        'username': new FormControl(null, Validators.required), //username is a form control you need to remember this, null <=> default value.
+        'username': new FormControl(null, [Validators.required, this.isRestictedNames.bind(this)]), //username is a form control you need to remember this, null <=> default value.
         //Validators is a static method 
         'email': new FormControl(null, [Validators.required, Validators.email]), //form control 2
       }), 
@@ -52,6 +54,27 @@ export class ReactiveFormsComponent implements OnInit{
     const control = new FormControl(null, Validators.required);
     (<FormArray>this.signUpForm.get('hobbies')).push(control);
   }
+
+
+  //{[s: string]: boolean} : cette méthode return un objet de cette forme:{string : true or false} :
+  
+  isRestictedNames(control: FormControl){     
+    // if(this.restictedNames.includes(control.value)){
+    if(this.restictedNames.includes(control.value)){
+      return {nameIsRestricted: true}; //nameIsRestricted is a key for this custom Validations 
+    }
+    return null;
+  }
+
+  // isNotRestictedNames(control: FormControl){     
+  //   // if(this.restictedNames.includes(control.value)){
+  //   if(!this.restictedNames.includes(control.value)){
+  //     return {nameIsRestricted: true}; //nameIsRestricted is a key for this custom Validations 
+  //   }
+  //   return null;
+  // }
+
+  
 
 
 }
