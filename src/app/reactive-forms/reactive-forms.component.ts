@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { __values } from 'tslib';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -34,20 +35,43 @@ export class ReactiveFormsComponent implements OnInit{
   ngOnInit(): void {
     //we need to create an object of the form Group, and i need to give the controls present in the form Group (inpusts) :
     this.signUpForm = new FormGroup({
+      //'formcontrolName': new FormControl(default value, [sync validators], [async validators]),
+
       // 'userData': new FormGroup({}), : is the first thing to do for Grouping the Controls in the Reactive Forms using FormGroupName in FormGroup
       'userData': new FormGroup({
         'username': new FormControl(null, [Validators.required, this.isRestictedNames.bind(this)]), //username is a form control you need to remember this, null <=> default value.
         //Validators is a static method 
-        'email': new FormControl(null, [Validators.required, Validators.email], [this.isRestrictedEmails]), //form control 2
+        'email': new FormControl(null, [Validators.required, Validators.email]), //form control 2
       }), 
 
       'gender': new FormControl('female'), //form control 3
       'hobbies': new FormArray([])//FormArray = list of form control
     });
-  }//after defining the validators we need to define the error message:
+    this.signUpForm.statusChanges.subscribe((value: any) => {
+      console.log(value);
+    });
+
+    // this.signUpForm.setValue({
+    //   userData:{
+    //     username: 'Hai Leela',
+    //     email:'test@test.com',
+    //   },
+    //   gender: 'male',
+    //   hobbies: []
+    // });
+    this.signUpForm.patchValue({
+      userData:{
+        username: 'Hai Leela',
+      },
+      gender: 'male',
+      hobbies: []
+    });
+
+  }
 
   onSubmit(){
     console.log(this.signUpForm);
+    this.signUpForm.reset();
   }
 
   onAddHobby(){
@@ -80,6 +104,13 @@ export class ReactiveFormsComponent implements OnInit{
     })    
     return promise; 
   }
+
+
+
+
+
+
+
   
 
 
