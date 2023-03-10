@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, RequiredValidator, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -37,12 +38,12 @@ export class ReactiveFormsComponent implements OnInit{
       'userData': new FormGroup({
         'username': new FormControl(null, [Validators.required, this.isRestictedNames.bind(this)]), //username is a form control you need to remember this, null <=> default value.
         //Validators is a static method 
-        'email': new FormControl(null, [Validators.required, Validators.email]), //form control 2
+        'email': new FormControl(null, [Validators.required, Validators.email], [this.isRestrictedEmails]), //form control 2
       }), 
-     
+
       'gender': new FormControl('female'), //form control 3
       'hobbies': new FormArray([])//FormArray = list of form control
-    })
+    });
   }//after defining the validators we need to define the error message:
 
   onSubmit(){
@@ -66,14 +67,19 @@ export class ReactiveFormsComponent implements OnInit{
     return null;
   }
 
-  // isNotRestictedNames(control: FormControl){     
-  //   // if(this.restictedNames.includes(control.value)){
-  //   if(!this.restictedNames.includes(control.value)){
-  //     return {nameIsRestricted: true}; //nameIsRestricted is a key for this custom Validations 
-  //   }
-  //   return null;
-  // }
-
+  isRestrictedEmails(control: FormControl): Promise<any> | Observable<any>{
+    let promise = new Promise((resolve,reject) => {
+      setTimeout(() => {
+        if(control.value === 'test@test.com'){
+          resolve ({emailIsRestricted: true});
+          console.log('isRestrictedEmails');
+        }else{
+          resolve(null);
+        }
+      }, 2000);
+    })    
+    return promise; 
+  }
   
 
 
