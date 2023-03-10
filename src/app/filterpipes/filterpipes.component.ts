@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filterpipes.component.css']
 })
 export class FilterpipesComponent implements OnInit{
+  filteredString: string='';
   users = [{
     name: 'Leela',
     joinedDate: new Date(15, 2, 2016)
