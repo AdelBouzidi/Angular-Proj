@@ -19,6 +19,7 @@ import { UserService } from './services/user.service';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { FilterpipesComponent } from './filterpipes/filterpipes.component';
+import { ShortenPipe } from './Pipes/shorten.pipe';
 
 // const appRoutes: Routes = [
 //   {path: '', component: HomeComponent}, //localhost;4200/
@@ -51,7 +52,8 @@ import { FilterpipesComponent } from './filterpipes/filterpipes.component';
     PageNotFoundComponent,
     TemplateFormComponent,
     ReactiveFormsComponent,
-    FilterpipesComponent
+    FilterpipesComponent,
+    ShortenPipe,
   ],
   imports: [
     BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule
