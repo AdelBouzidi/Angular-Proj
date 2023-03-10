@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { __values } from 'tslib';
 
@@ -41,7 +41,7 @@ export class ReactiveFormsComponent implements OnInit{
       'userData': new FormGroup({
         'username': new FormControl(null, [Validators.required, this.isRestictedNames.bind(this)]), //username is a form control you need to remember this, null <=> default value.
         //Validators is a static method 
-        'email': new FormControl(null, [Validators.required, Validators.email]), //form control 2
+        'email': new FormControl(null, [Validators.required, Validators.email], [this.isRestrictedEmails]), //form control 2
       }), 
 
       'gender': new FormControl('female'), //form control 3
@@ -91,7 +91,7 @@ export class ReactiveFormsComponent implements OnInit{
     return null;
   }
 
-  isRestrictedEmails(control: FormControl): Promise<any> | Observable<any>{
+  isRestrictedEmails(control: AbstractControl): Promise<any> | Observable<any>{
     let promise = new Promise((resolve,reject) => {
       setTimeout(() => {
         if(control.value === 'test@test.com'){
@@ -105,6 +105,7 @@ export class ReactiveFormsComponent implements OnInit{
     return promise; 
   }
 
+  //AbstractControl FormControl !§
 
 
 

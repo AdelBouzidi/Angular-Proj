@@ -8,8 +8,8 @@
                         <label>UserName</label>
                         <input type="text" class="form-control" formControlName="username"/>
                         <span class="help-block" *ngIf="signUpForm.get('userData.username').invalid && signUpForm.get('userData.username').touched">
-                            <span *ngIf="signUpForm.get('userData.username').errors.required">this name is not valid</span>
-                            <span *ngIf="signUpForm.get('userData.username').errors.nameIsRestricted">
+                            <span *ngIf="signUpForm.get('userData.username').errors?.required">this name is not valid</span>
+                            <span *ngIf="signUpForm.get('userData.username').errors?.nameIsRestricted">
                                 <span>  this name is restricted </span>
                             </span>
                         </span>
@@ -18,7 +18,12 @@
                     <div class="form-group">
                         <label>Email</label>
                         <input type="text" class="form-control" formControlName="email"/>
-                        <span class="help-block" *ngIf="!signUpForm.get('userData.email').valid && signUpForm.get('userData.email').touched">Please enter valid email</span>
+                        <span class="help-block" *ngIf="signUpForm.get('userData.email').invalid && signUpForm.get('userData.email').touched">Please enter valid email
+                            <span *ngIf="signUpForm.get('userData.email').errors?.required">this name is not valid</span>
+                            <span *ngIf="signUpForm.get('userData.email').errors?.emailIsRestricted">
+                                <span>  this email is restricted </span>
+                            </span>
+                        </span>
                     </div>
                 </div>
 
