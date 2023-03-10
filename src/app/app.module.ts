@@ -18,6 +18,7 @@ import { userResolveService } from './services/resolvers/user-resolve.service';
 import { UserService } from './services/user.service';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+import { FilterpipesComponent } from './filterpipes/filterpipes.component';
 
 // const appRoutes: Routes = [
 //   {path: '', component: HomeComponent}, //localhost;4200/
@@ -49,7 +50,8 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
     EditUserComponent,
     PageNotFoundComponent,
     TemplateFormComponent,
-    ReactiveFormsComponent
+    ReactiveFormsComponent,
+    FilterpipesComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule

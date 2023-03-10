@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { CategoriesComponent } from "./categories/categories.component";
 import { EditUserComponent } from "./edit-user/edit-user.component";
+import { FilterpipesComponent } from "./filterpipes/filterpipes.component";
 import { HomeComponent } from "./home/home.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { ReactiveFormsComponent } from "./reactive-forms/reactive-forms.component";
@@ -31,6 +32,7 @@ const appRoutes: Routes = [
     {path: 'categories', component: CategoriesComponent },
     {path: 'templateform', component: TemplateFormComponent },
     {path: 'reactiveform', component: ReactiveFormsComponent },
+    {path: 'filterpipes', component: FilterpipesComponent }, 
     {path: 'user', component: UserComponent},
     
     // { path: '**', pathMatch: 'full',

@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div *ngFor="let user of users" class="my-3">
+                <div>
+                    Name: {{user.name | uppercase}}<br>
+                    <!-- Joined Date: {{user.joinedDate | date:'fullDate':'if you have another parametre you can pass it here'}} -->
+                    Joined Date: {{user.joinedDate | date:'fullDate' | uppercase}}                
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
