@@ -90,7 +90,7 @@ export class ReactiveFormsComponent implements OnInit{
     }
     return null;
   }
-
+//video89
   isRestrictedEmails(control: AbstractControl): Promise<any> | Observable<any>{
     let promise = new Promise((resolve,reject) => {
       setTimeout(() => {
