@@ -1,8 +1,9 @@
 import { HttpClient, HttpContext } from '@angular/common/http';
-import { ArrayType } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs';
+import { Post } from './Post.model';
+
 
 @Component({
   selector: 'app-posts',
@@ -22,12 +23,19 @@ export class PostsComponent implements OnInit{
     this.getPost();
   }
 
-  getPost(){
-    this.http.get('https://ng-complete-guide-f9175-default-rtdb.europe-west1.firebasedatabase.app/posts.json').pipe(map((response :any) => {
-      let posts=[];
-      for(let key in response){ // in not of because it is an object
-        posts.push({...response[key], key});
+  getPost(){ //we are getting the data as an object
+    this.http.get('https://ng-complete-guide-f9175-default-rtdb.europe-west1.firebasedatabase.app/posts.json')
+    .pipe(
+      map((response :{[key:string]:Post}) => {
+      let posts: Post[] = [];
+      for(let key in response){ // in not of, because it is an object
+        // console.log({...response[key], key});
+        // console.dir(response);
+        // posts.push({...response[key], key});
+        // posts.push(response[key], key);
       }
+      console.log(posts);
+
       return posts;
     })).subscribe(response => {
     //  console.log(response);
@@ -42,5 +50,4 @@ export class PostsComponent implements OnInit{
       this.getPost();
     });
   }
-
 }
