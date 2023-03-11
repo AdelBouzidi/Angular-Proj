@@ -23,4 +23,11 @@ export class FilterpipesComponent implements OnInit{
   
   ngOnInit(): void {
   }
+
+  onAddUser(){
+    this.users.push({
+      name: 'simple',
+      joinedDate: new Date(12,2,2009)
+    })
+  }
 }
