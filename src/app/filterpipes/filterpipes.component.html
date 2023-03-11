@@ -3,9 +3,16 @@
         <div class="col-md-12">
             <button (click)="onAddUser()">Add User</button>
         </div>
+
+        <div class="my-2">
+            {{appStatus | async}}   
+        </div> <!--for take a data from un promise or an observable also we use the pipe async -->
+
+
         <div class="col-md-12">
             <input type="text" class="form-control" [(ngModel)]="filteredString">
         </div>
+        
         <div class="col-md-12">
             <div *ngFor="let user of users | filter:filteredString" class="my-3">
                 <div>
