@@ -5,6 +5,7 @@ import { EditUserComponent } from "./edit-user/edit-user.component";
 import { FilterpipesComponent } from "./filterpipes/filterpipes.component";
 import { HomeComponent } from "./home/home.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { PostsComponent } from "./posts/posts.component";
 import { ReactiveFormsComponent } from "./reactive-forms/reactive-forms.component";
 import { AuthGuardService } from "./services/guardes/auth-guard.service";
 import { DeactivateGuardService } from "./services/guardes/deactivat-guard.service";
@@ -33,6 +34,7 @@ const appRoutes: Routes = [
     {path: 'templateform', component: TemplateFormComponent },
     {path: 'reactiveform', component: ReactiveFormsComponent },
     {path: 'filterpipes', component: FilterpipesComponent }, 
+    {path: 'posts', component: PostsComponent }, 
     {path: 'user', component: UserComponent},
     
     // { path: '**', pathMatch: 'full',

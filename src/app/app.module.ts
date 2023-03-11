@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http'
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
@@ -21,6 +21,7 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
 import { FilterpipesComponent } from './filterpipes/filterpipes.component';
 import { ShortenPipe } from './Pipes/shorten.pipe';
 import { FilterPipe } from './Pipes/filter.pipe';
+import { PostsComponent } from './posts/posts.component';
 
 // const appRoutes: Routes = [
 //   {path: '', component: HomeComponent}, //localhost;4200/
@@ -56,9 +57,10 @@ import { FilterPipe } from './Pipes/filter.pipe';
     FilterpipesComponent,
     ShortenPipe,
     FilterPipe,
+    PostsComponent,
   ],
   imports: [
-    BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule
+    BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule
   ],
   providers: [AuthService, AuthGuardService, DeactivateGuardService, userResolveService, UserService],
   bootstrap: [AppComponent]
