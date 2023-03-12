@@ -24,11 +24,13 @@
     <div>
         <table class="table">
             <thead>
+                <th>Key</th>
                 <th>Title</th>
                 <th>Content</th>
             </thead>
             <tbody>
                 <tr *ngFor="let post of posts">
+                    <td>{{post.key}}</td>
                     <td>{{post.title}}</td>
                     <td>{{post.content}}</td>
                 </tr>

@@ -12,7 +12,7 @@ import { Post } from './Post.model';
 })
 export class PostsComponent implements OnInit{
   postForm: FormGroup | any;
-  posts:any;
+  posts:Post[];
   constructor( private http: HttpClient) {
   }
   ngOnInit(): void {
@@ -23,31 +23,29 @@ export class PostsComponent implements OnInit{
     this.getPost();
   }
 
-  getPost(){ //we are getting the data as an object
-    this.http.get('https://ng-complete-guide-f9175-default-rtdb.europe-west1.firebasedatabase.app/posts.json')
+  getPost(){ //we are getting the data as an object //howa mchatlo bla maa daar hadi:<{[key:string]:Post}>, la ligne suivante
+    this.http.get<{[key:string]:Post}>('https://ng-complete-guide-f9175-default-rtdb.europe-west1.firebasedatabase.app/posts.json')
     .pipe(
-      map((response :{[key:string]:Post}) => {
+      map(response => {
       let posts: Post[] = [];
-      for(let key in response){ // in not of, because it is an object
+      for(let key in response){ // in, not of, because it is an object.
         // console.log({...response[key], key});
-        // console.dir(response);
-        // posts.push({...response[key], key});
-        // posts.push(response[key], key);
+        posts.push({...response[key], key});
       }
-      console.log(posts);
-
       return posts;
     })).subscribe(response => {
     //  console.log(response);
      this.posts=response;
     });
-  }
+  } 
 
   onCreatePost(){
     // console.log(this.postForm.value);
     const postData= this.postForm.value;
-    this.http.post('https://ng-complete-guide-f9175-default-rtdb.europe-west1.firebasedatabase.app/posts.json', postData).subscribe(response =>{
-      this.getPost();
+    this.http.post<{name:string}>('https://ng-complete-guide-f9175-default-rtdb.europe-west1.firebasedatabase.app/posts.json', postData).subscribe(
+      response =>{
+        console.log(response);
+        this.getPost();
     });
   }
 }
