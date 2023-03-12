@@ -36,8 +36,18 @@ export class PostsComponent implements OnInit{
     const postData = this.postForm.value; // ou bien:     const postData :Post = this.postForm.value;
     this.postService.createPosts(postData).subscribe(
       response =>{
-        console.log(response);
+        // console.log(response);
         this.getPost();
     });
   }
+
+  onClearPosts(event: Event){
+    event.preventDefault(); //La méthode preventDefault() annule l'événement s'il est annulable, ce qui signifie que l'action par défaut 
+                            // qui appartient à l'événement ne se produira pas.
+    this.postService.ClearPosts();
+    // this.getPost(); mais ndirou hakda khir parce hna 3labalna raha sah tdir delete bla manzidou 
+    //ndirou hna http get, posts[] li rana naffichouf fih the getted data nmdoulou [] khir.
+    this.posts = [];
+  }
+
 }
