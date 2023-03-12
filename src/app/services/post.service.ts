@@ -17,7 +17,7 @@ export class PostService{
         return this.http.get<{[key:string]:Post}>('https://ng-complete-guide-f9175-default-rtdb.europe-west1.firebasedatabase.app/posts.json')
         .pipe(
           map(response => {
-          console.log(response);
+        //   console.log(response);
           let posts: Post[] = [];
           for(let key in response){ // in, not of, because it is an object.
             // console.log({...response[key], key});
@@ -31,5 +31,13 @@ export class PostService{
     createPosts(postData: Post){
         return this.http.post<{name:string}>('https://ng-complete-guide-f9175-default-rtdb.europe-west1.firebasedatabase.app/posts.json',
         postData);
+    }
+
+    ClearPosts(){
+        return this.http.delete<{name:string}>('https://ng-complete-guide-f9175-default-rtdb.europe-west1.firebasedatabase.app/posts.json')
+        .subscribe(
+            response => {
+            console.log(response);
+          })
     }
 }
