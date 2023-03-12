@@ -27,7 +27,7 @@
     </div>
 
     <div>
-        <table class="table">
+        <table class="table" *ngIf="!error">
             <thead>
                 <!-- <th>Key</th> -->
                 <th>Title</th>
@@ -41,5 +41,8 @@
                 </tr>
             </tbody>
         </table>
+        <div *ngIf="error">
+            <div class="alert alert-danger">{{error}}</div>
+        </div>
     </div>
 </div>

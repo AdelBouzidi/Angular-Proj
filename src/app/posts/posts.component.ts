@@ -14,6 +14,7 @@ import { Post } from './Post.model';
 export class PostsComponent implements OnInit{
   postForm: FormGroup | any;
   posts:Post[];
+  error = null;
   constructor( private http: HttpClient, private postService: PostService) {
   }
   ngOnInit(): void {
@@ -28,6 +29,9 @@ export class PostsComponent implements OnInit{
     this.postService.fetchPosts().subscribe(response => { // kona 9adrin ndirou (response :Post[]) mais aslan f service rana nretournou variable de type post[] 
     //  console.log(response);
      this.posts=response;
+    }, error => {
+      this.error = error.message;
+      console.log(error);
     });
   } 
 
