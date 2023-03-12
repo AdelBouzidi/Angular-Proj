@@ -1,0 +1,10 @@
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+    /* font-size: larger;
+    position: -ms-page; */
+ }
+ textarea.ng-invalid.ng-touched{
+    border: 1px solid red;
+    /* font-size: larger;
+    position: -ms-page; */
+ }

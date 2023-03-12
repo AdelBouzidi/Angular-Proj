@@ -6,6 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filterpipes.component.css']
 })
 export class FilterpipesComponent implements OnInit{
+
+  appStatus = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Users Data Received');
+      console.log(this.appStatus);
+    }, 3000);
+  })
+
   filteredString: string='';
   users = [{
     name: 'Leela',
@@ -22,5 +30,12 @@ export class FilterpipesComponent implements OnInit{
   ];   
   
   ngOnInit(): void {
+  }
+
+  onAddUser(){
+    this.users.push({
+      name: 'simple',
+      joinedDate: new Date(12,2,2009)
+    })
   }
 }
