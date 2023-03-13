@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map } from "rxjs";
 import { Post } from "../posts/Post.model";
@@ -14,7 +14,11 @@ export class PostService{
     }
 
     fetchPosts(){
-        return this.http.get<{[key:string]:Post}>('https://ng-complete-guide-f9175-default-rtdb.europe-west1.firebasedatabase.app/posts.json')
+        return this.http.get<{[key:string]:Post}>('https://ng-complete-guide-f9175-default-rtdb.europe-west1.firebasedatabase.app/posts.json', {
+          headers: new HttpHeaders({
+            'custom-header':'Leela'      
+          }),
+        })
         .pipe(
           map(response => {
         //   console.log(response);
@@ -30,7 +34,11 @@ export class PostService{
 
     createPosts(postData: Post){
         return this.http.post<{name:string}>('https://ng-complete-guide-f9175-default-rtdb.europe-west1.firebasedatabase.app/posts.json',
-        postData);
+        postData,{
+          headers: new HttpHeaders({
+            'custom-header': 'post Leela',
+          }),
+        });
     }
 
     ClearPosts(){
