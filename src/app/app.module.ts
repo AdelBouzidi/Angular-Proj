@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http' //http
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http' //http
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
@@ -22,6 +22,7 @@ import { FilterpipesComponent } from './filterpipes/filterpipes.component';
 import { ShortenPipe } from './Pipes/shorten.pipe';
 import { FilterPipe } from './Pipes/filter.pipe';
 import { PostsComponent } from './posts/posts.component';
+import { AuthInterceptorService } from './services/auth-interceptor-service';
 
 // const appRoutes: Routes = [
 //   {path: '', component: HomeComponent}, //localhost;4200/
@@ -62,7 +63,13 @@ import { PostsComponent } from './posts/posts.component';
   imports: [
     BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule
   ],
-  providers: [AuthService, AuthGuardService, DeactivateGuardService, userResolveService, UserService],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
+    AuthService, 
+    AuthGuardService, 
+    DeactivateGuardService, 
+    userResolveService, 
+    UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
