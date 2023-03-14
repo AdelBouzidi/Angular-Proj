@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpEventType, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { map } from "rxjs";
+import { map, tap } from "rxjs";
 import { Post } from "../posts/Post.model";
 
 //sinon tnahih mena w tdirou f provider f app-component.ts kifkif, dans les deux cas You can now inject UserService 
@@ -18,7 +18,7 @@ export class PostService{
       searchParams= searchParams.append('custom','Hai');
       searchParams= searchParams.append('name','Leela');
 
-        return this.http.get<{[key:string]:Post}>('https://ng-complete-guide-f9175-default-rtdb.europe-west1.firebasedatabase.app/posts.json?custom=hay', {
+        return this.http.get<{[key:string]:Post}>('https://ng-complete-guide-f9175-default-rtdb.europe-west1.firebasedatabase.app/posts.json?custom=Hai', {
           headers: new HttpHeaders({
             'custom-header':'Leela'      
           }),
@@ -44,14 +44,30 @@ export class PostService{
           headers: new HttpHeaders({
             'custom-header': 'post Leela',
           }),
+          observe: 'response',
         });
     }
 
     ClearPosts(){
-        return this.http.delete<{name:string}>('https://ng-complete-guide-f9175-default-rtdb.europe-west1.firebasedatabase.app/posts.json')
+        return this.http.delete<{name:string}>('https://ng-complete-guide-f9175-default-rtdb.europe-west1.firebasedatabase.app/posts.json',{
+          observe: 'events',
+        }).pipe(tap(response => {
+          // if(response.type === 0){
+          //   console.log('request sent');
+          // } ou bien :
+          if(response.type === HttpEventType.Sent){ //remember that HttpEventType exist pnly in type script not in javaScript
+            console.log('request sent');
+          }
+          // if(response.type === 4){ //if there no data to delete it
+          //   console.log(response);
+          // } ou bien :
+          if(response.type === HttpEventType.Response){ //if there no data to delete it
+            console.log(response);
+          }
+        }))
         .subscribe(
             response => {
-            console.log(response);
+            // console.log(response);
           })
     }
 }
