@@ -40,7 +40,7 @@ export class PostsComponent implements OnInit{
     const postData = this.postForm.value; // ou bien:     const postData :Post = this.postForm.value;
     this.postService.createPosts(postData).subscribe(
       response =>{
-        // console.log(response);
+        console.log(response);
         this.getPost();
     });
   }
