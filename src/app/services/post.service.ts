@@ -2,6 +2,7 @@ import { HttpClient, HttpEventType, HttpHeaders, HttpParams } from "@angular/com
 import { Injectable } from "@angular/core";
 import { map, tap } from "rxjs";
 import { Post } from "../posts/Post.model";
+import { AuthInterceptorService } from "./auth-interceptor-service";
 
 //sinon tnahih mena w tdirou f provider f app-component.ts kifkif, dans les deux cas You can now inject UserService 
 //anywhere in your application.
