@@ -1,19 +1,32 @@
 <div class="row">
     <div class="col-md-12">
-        <form>
+        <form #authForm="ngForm" (ngSubmit)="onFormSubmit(authForm)">
             
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" class="form-control"/>
+                <input type="text" class="form-control" ngModel name="email" required email #email="ngModel"/>
             </div>
+            <div class="help-text" *ngIf="!email.valid && email.touched">
+                <div *ngIf="email.errors?.['required']">email is required</div>
+                <div *ngIf="email.errors?.['email']">email is invalid</div>
+            </div>
+
             
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control"/>
+                <input type="password" class="form-control" ngModel name="password" required minlength="6" #password="ngModel"/>
             </div>
+            <!-- <div class="help-text" *ngIf="!password.valid && password.touched">
+                <div *ngIf="password.errors?.['required']">password is required</div>
+                <div *ngIf="password.errors?.['minlength'] && !password.errors?.['required']">Password should be of 6 characters length</div>
+            </div> ou bien : -->
+            <div class="help-text" *ngIf="!password.valid && password.touched">
+                <div>{{getPasswordErrors(password)}}</div>
+            </div>
+
             
             <div class="mt-4">
-                <button class="submit" class="btn btn-primary">
+                <button class="submit" class="btn btn-primary" [disabled]="!authForm.valid">
                     {{ isLoginMode ? "Login" : "SignUp" }}
                 </button> | 
                 <button class="button" class="btn btn-primary" (click)="onSwitchMode()">
