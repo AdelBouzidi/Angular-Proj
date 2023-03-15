@@ -24,6 +24,7 @@ import { FilterPipe } from './Pipes/filter.pipe';
 import { PostsComponent } from './posts/posts.component';
 import { AuthInterceptorService } from './services/auth-interceptor-service';
 import { LoggingInterceptorService } from './services/logging-interceptor-service';  
+import { AuthComponent } from './auth/auth.component';
 
 // const appRoutes: Routes = [
 //   {path: '', component: HomeComponent}, //localhost;4200/
@@ -60,6 +61,7 @@ import { LoggingInterceptorService } from './services/logging-interceptor-servic
     ShortenPipe,
     FilterPipe,
     PostsComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule

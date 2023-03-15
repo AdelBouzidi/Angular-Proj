@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { AuthComponent } from "./auth/auth.component";
 import { CategoriesComponent } from "./categories/categories.component";
 import { EditUserComponent } from "./edit-user/edit-user.component";
 import { FilterpipesComponent } from "./filterpipes/filterpipes.component";
@@ -36,6 +37,8 @@ const appRoutes: Routes = [
     {path: 'filterpipes', component: FilterpipesComponent }, 
     {path: 'posts', component: PostsComponent }, 
     {path: 'user', component: UserComponent},
+    {path: 'auth', component: AuthComponent},
+
     
     // { path: '**', pathMatch: 'full',
     // component: PageNotFoundComponent } ou bien
