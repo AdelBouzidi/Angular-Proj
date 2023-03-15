@@ -56,14 +56,14 @@ export class PostService{
           // if(response.type === 0){
           //   console.log('request sent');
           // } ou bien :
-          if(response.type === HttpEventType.Sent){ //remember that HttpEventType exist pnly in type script not in javaScript
-            console.log('request sent');
+          if(response.type === HttpEventType.Sent){ //remember that HttpEventType exist only in type script not in javaScript
+            console.log('request sent');  // HttpEventType.Sent : La demande a été envoyée par fil.
           }
           // if(response.type === 4){ //if there no data to delete it
           //   console.log(response);
           // } ou bien :
           if(response.type === HttpEventType.Response){ //if there no data to delete it
-            console.log(response);
+            console.log(response); // HttpEventType.Response : La réponse complète, y compris le corps, a été reçue.
           }
         }))
         .subscribe(
