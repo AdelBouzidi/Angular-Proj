@@ -23,6 +23,7 @@ import { ShortenPipe } from './Pipes/shorten.pipe';
 import { FilterPipe } from './Pipes/filter.pipe';
 import { PostsComponent } from './posts/posts.component';
 import { AuthInterceptorService } from './services/auth-interceptor-service';
+import { LoggingInterceptorService } from './services/logging-interceptor-service';  
 
 // const appRoutes: Routes = [
 //   {path: '', component: HomeComponent}, //localhost;4200/
@@ -64,7 +65,12 @@ import { AuthInterceptorService } from './services/auth-interceptor-service';
     BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
+    {provide: HTTP_INTERCEPTORS, 
+      useClass: AuthInterceptorService, 
+      multi: true }, //interceptor 1
+    {provide: HTTP_INTERCEPTORS, 
+      useClass: LoggingInterceptorService, 
+      multi: true }, //interceptor 2 (this interceptor will be executed after interceptor 1)
     AuthService, 
     AuthGuardService, 
     DeactivateGuardService, 
