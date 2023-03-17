@@ -10,7 +10,7 @@ import { UserComponent } from './user/user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthService } from './services/guardes/auth.service';
+import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/guardes/auth-guard.service';
 import { DeactivateGuardService } from './services/guardes/deactivat-guard.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -25,6 +25,7 @@ import { PostsComponent } from './posts/posts.component';
 import { AuthInterceptorService } from './services/auth-interceptor-service';
 import { LoggingInterceptorService } from './services/logging-interceptor-service';  
 import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinnerComponent } from './Shared/loading-spinner/loading-spinner.component';
 
 // const appRoutes: Routes = [
 //   {path: '', component: HomeComponent}, //localhost;4200/
@@ -62,6 +63,7 @@ import { AuthComponent } from './auth/auth.component';
     FilterPipe,
     PostsComponent,
     AuthComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule
