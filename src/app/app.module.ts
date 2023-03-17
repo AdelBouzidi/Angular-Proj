@@ -10,7 +10,7 @@ import { UserComponent } from './user/user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthService } from './services/guardes/auth.service';
+import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/guardes/auth-guard.service';
 import { DeactivateGuardService } from './services/guardes/deactivat-guard.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
