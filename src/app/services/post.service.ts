@@ -57,7 +57,7 @@ export class PostService{
           //   console.log('request sent');
           // } ou bien :
           if(response.type === HttpEventType.Sent){ //remember that HttpEventType exist only in type script not in javaScript
-            console.log('request sent');  // HttpEventType.Sent : La demande a été envoyée par fil.
+            console.log('request sent');  // HttpEventType.Sent : La demande a été envoyée.
           }
           // if(response.type === 4){ //if there no data to delete it
           //   console.log(response);

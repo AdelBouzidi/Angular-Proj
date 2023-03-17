@@ -10,7 +10,6 @@ export class AuthComponent implements OnInit{
     isLoginMode=true;
     isLoading = false;
     error: string;
-
     ngOnInit(): void {
     }
 
@@ -32,10 +31,9 @@ export class AuthComponent implements OnInit{
             this.authService.signup(authForm.value.email, authForm.value.password).subscribe((response : any) => {
                 console.log(response);
                 this.isLoading = false;
-            }, error => {
-                console.log(error);
+            }, (errorMessage) => {
                 this.isLoading = false;
-                this.error= 'An Error Ocured';
+                this.error=errorMessage;
             });
         } 
         // console.log(authForm.value);

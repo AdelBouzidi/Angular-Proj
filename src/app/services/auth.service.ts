@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { catchError, throwError } from "rxjs";
 
 //data of response:
 interface AuthResponseData{
@@ -19,7 +20,18 @@ export class AuthService{
     signup(email: string, password: string){
         return this.http.post<AuthResponseData>(
             'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAsR-nqUfokOrgzG7qZc7qqx49bcKiVmEc',
-        {email, password, returnSecureToken: true});
+        {email, password, returnSecureToken: true}).pipe(catchError((errorRes)=>{
+            console.log(errorRes);
+            let errorMessage= 'An Error Ocured';
+            if(!errorRes.error || !errorRes.error.error){
+                return throwError(errorMessage);
+            }
+            switch(errorRes.error.error.message){
+                case 'EMAIL_EXISTS':
+                errorMessage='Email Already Exist';
+            }
+            return throwError(errorMessage);
+        }));
         // console.log(authRes);
     }
 
