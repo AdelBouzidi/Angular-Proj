@@ -8,6 +8,8 @@ import { AuthService } from "../services/auth.service";
 }) 
 export class AuthComponent implements OnInit{
     isLoginMode=true;
+    isLoading = false;
+    error: string;
 
     ngOnInit(): void {
     }
@@ -18,17 +20,22 @@ export class AuthComponent implements OnInit{
         this.isLoginMode = !this.isLoginMode;
     }
 
+
     onFormSubmit(authForm: NgForm){
         if(!authForm.valid){
             return;
         }
+        this.isLoading = true;
         if(this.isLoginMode){
             //Perform Login Request Call
         }else{       // hna rah ndirou khdmtna psq rana ndirou f signup
             this.authService.signup(authForm.value.email, authForm.value.password).subscribe((response : any) => {
                 console.log(response);
+                this.isLoading = false;
             }, error => {
                 console.log(error);
+                this.isLoading = false;
+                this.error= 'An Error Ocured';
             });
         } 
         // console.log(authForm.value);
