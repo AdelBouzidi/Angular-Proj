@@ -1,0 +1,30 @@
+<ul class="nav flex-column nav-pills">
+    <!-- Création de liens : -->
+    <!-- <li class="nav-item"> <a href="/">Home</a> </li>
+    <li class="nav-item"> <a href="/users">Users</a> </li>
+    <li class="nav-item"> <a href="/categories">Categories</a> </li> -->
+    <!-- : En utilisant des liens natifs <a href="/search">, le "browser" va produire une requête HTTP GET vers le serveur et recharger 
+    toute l'application. Pour éviter ce problème, le module de "Routing" Angular fournit la Directive routerLink qui permet 
+    d'intercepter l'événement click sur les liens et de changer de "route" sans recharger toute l'application. -->
+  
+    <!-- <li class="nav-item"> <a routerLink="/">Home</a> </li>  -->
+    <!-- ou bien: -->
+    <li class="nav-item"> <a class="nav-link" routerLink="/auth" routerLinkActive="active">Auth</a> </li>
+
+    <li class="nav-item "> 
+      <a 
+      class="nav-link" [routerLink]="['/']" 
+      routerLinkActive="active" 
+      [routerLinkActiveOptions]="{exact: true}" 
+      >Home
+      </a> 
+    </li> <!--as an parametre to the directive routerLink -->
+    <!-- [routerLinkActiveOptions]="{exact: true}" : ç-à-dire home tedi la couleur blue ki ykoun tale3 f navigateur this link http://localhost:4200/ exactely 
+      not http://localhost:4200/user ou http://localhost:4200/categories -->
+    <li class="nav-item"> <a class="nav-link" routerLink="/users" routerLinkActive="active">Users</a> </li>
+    <li class="nav-item"> <a class="nav-link" [routerLink]="['/categories']" routerLinkActive="active">Categories</a> </li>
+    <li class="nav-item"> <a class="nav-link" [routerLink]="['/templateform']" routerLinkActive="active">Template Form</a> </li>
+    <li class="nav-item"> <a class="nav-link" [routerLink]="['/reactiveform']" routerLinkActive="active">Reactive Form</a> </li>
+    <li class="nav-item"> <a class="nav-link" [routerLink]="['/filterpipes']" routerLinkActive="active">Filter Pipes</a> </li>
+    <li class="nav-item"> <a class="nav-link" [routerLink]="['/posts']" routerLinkActive="active">Posts</a> </li>
+  </ul>

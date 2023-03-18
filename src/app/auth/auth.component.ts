@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormControl, FormGroup, NgForm } from "@angular/forms";
+import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { AuthResponseData, AuthService } from "../services/auth.service";
 
@@ -14,7 +15,7 @@ export class AuthComponent implements OnInit{
     ngOnInit(): void {
     }
 
-    constructor(private authService: AuthService) {
+    constructor(private authService: AuthService, private router: Router) {
     }
     onSwitchMode(){
         this.isLoginMode = !this.isLoginMode;
@@ -36,9 +37,12 @@ export class AuthComponent implements OnInit{
             authObs = this.authService.signup(authForm.value.email, authForm.value.password);
         } 
 
+        // pour eviter la duplication nahina .subscribe men login w signup we dernahom f une methode
         authObs.subscribe((response : any) => {
             console.log(response);
             this.isLoading = false;
+            // console.log('connexion effectuée');
+            this.router.navigate(['/']);   // : navigate to the HomePage
         }, (errorMessage) => {
             this.isLoading = false;
             this.error=errorMessage;

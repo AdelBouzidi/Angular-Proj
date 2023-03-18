@@ -26,6 +26,7 @@ import { AuthInterceptorService } from './services/auth-interceptor-service';
 import { LoggingInterceptorService } from './services/logging-interceptor-service';  
 import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './Shared/loading-spinner/loading-spinner.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 // const appRoutes: Routes = [
 //   {path: '', component: HomeComponent}, //localhost;4200/
@@ -64,6 +65,7 @@ import { LoadingSpinnerComponent } from './Shared/loading-spinner/loading-spinne
     PostsComponent,
     AuthComponent,
     LoadingSpinnerComponent,
+    NavigationComponent,
   ],
   imports: [
     BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule
