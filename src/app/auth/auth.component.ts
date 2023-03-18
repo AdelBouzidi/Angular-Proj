@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormControl, FormGroup, NgForm } from "@angular/forms";
-import { AuthService } from "../services/auth.service";
+import { Observable } from "rxjs";
+import { AuthResponseData, AuthService } from "../services/auth.service";
 
 @Component({
     selector: 'app-auth',
@@ -25,17 +26,22 @@ export class AuthComponent implements OnInit{
             return;
         }
         this.isLoading = true;
+
+        let authObs: Observable<AuthResponseData>;
         if(this.isLoginMode){
             //Perform Login Request Call
+            authObs = this.authService.logiin(authForm.value.email, authForm.value.password);
         }else{       // hna rah ndirou khdmtna psq rana ndirou f signup
-            this.authService.signup(authForm.value.email, authForm.value.password).subscribe((response : any) => {
-                console.log(response);
-                this.isLoading = false;
-            }, (errorMessage) => {
-                this.isLoading = false;
-                this.error=errorMessage;
-            });
+            authObs = this.authService.signup(authForm.value.email, authForm.value.password);
         } 
+
+        authObs.subscribe((response : any) => {
+            console.log(response);
+            this.isLoading = false;
+        }, (errorMessage) => {
+            this.isLoading = false;
+            this.error=errorMessage;
+        });
         // console.log(authForm.value);
     }
     getPasswordErrors(password : any){   // howa daar hna (password : FormControm)
