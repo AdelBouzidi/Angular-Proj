@@ -26,11 +26,12 @@ export class AuthComponent implements OnInit{
             return;
         }
         this.isLoading = true;
+        // this.error=null ; mahabtch tmchili 
 
         let authObs: Observable<AuthResponseData>;
         if(this.isLoginMode){
             //Perform Login Request Call
-            authObs = this.authService.logiin(authForm.value.email, authForm.value.password);
+            authObs = this.authService.login(authForm.value.email, authForm.value.password);
         }else{       // hna rah ndirou khdmtna psq rana ndirou f signup
             authObs = this.authService.signup(authForm.value.email, authForm.value.password);
         } 

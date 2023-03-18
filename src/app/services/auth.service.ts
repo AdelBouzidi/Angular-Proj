@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, throwError } from "rxjs";
 
@@ -22,29 +22,44 @@ export class AuthService{
         return this.http.post<AuthResponseData>(
             'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAsR-nqUfokOrgzG7qZc7qqx49bcKiVmEc',
         {email, password, returnSecureToken: true}).pipe(catchError((errorRes)=>{
-            console.log(errorRes);
-            let errorMessage= 'An Error Ocured';
-            if(!errorRes.error || !errorRes.error.error){
-                return throwError(errorMessage);
-            }
-            switch(errorRes.error.error.message){
-                case 'EMAIL_EXISTS':
-                errorMessage='Email Already Exist';
-            }
-            return throwError(errorMessage);
+            return this.getErrorHandler(errorRes);
         }));
         // console.log(authRes);
     }
 
-    logiin(email: string, password: string){
+    login(email: string, password: string){
         return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAsR-nqUfokOrgzG7qZc7qqx49bcKiVmEc',
-        {email, password, returnSecureToken: true});
+        {email, password, returnSecureToken: true}).pipe(catchError((errorRes)=>{
+            return this.getErrorHandler(errorRes);
+        }));
     }
 
-    
-    login(){
-        this.isLoggedIn = true;
+    //bech mandirouch catch error f sign up w f login fi zou2 ndirou une methode khir pour eviter la duplication 
+    getErrorHandler(errorRes: HttpErrorResponse){
+        console.log(errorRes);
+        let errorMessage= 'An Error Ocured';
+        if(!errorRes.error || !errorRes.error.error){
+            return throwError(errorMessage);
+        }
+        switch(errorRes.error.error.message){
+            case 'EMAIL_EXISTS':
+            errorMessage='Email Already Exist';
+            break;
+            case 'EMAIL_NOT_FOUND':
+                errorMessage='Email Not Found';
+                break;
+                case 'INVALID_PASSWORD':
+                    errorMessage='Invalid Password, Re-enter your password Please';
+                    break;
+        } 
+       
+        return throwError(errorMessage);
     }
+
+
+    // login(){
+    //     this.isLoggedIn = true;
+    // }
 
     logout(){
         this.isLoggedIn = false;
