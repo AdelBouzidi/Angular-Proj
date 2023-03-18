@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, tap, throwError } from "rxjs";
+import { catchError, Subject, tap, throwError } from "rxjs";
 import { User} from "../auth/user.model";
 
 //data of response:
@@ -16,6 +16,7 @@ export interface AuthResponseData{
 @Injectable({providedIn: 'root'})
 export class AuthService{
     isLoggedIn =false;
+    userSub = new Subject<User>();
 
     constructor(private http: HttpClient){
     }
@@ -28,7 +29,7 @@ export class AuthService{
             // const expireDate = new Date( new Date().getTime()+ +Response.expireIn*1000);
             // //after succefuly response we will get the data here:
             // const user= new User(Response.email, Response.localId, Response.idToken, expireDate);
-            this.HandleUser //sinon yla derna tap(Response=>.... : this.HandleUser(Response)
+            this.HandleUser.bind(this) //sinon yla derna tap(Response=>.... : this.HandleUser(Response)
         ));
         // console.log(authRes);
     }
@@ -38,7 +39,7 @@ export class AuthService{
         return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAsR-nqUfokOrgzG7qZc7qqx49bcKiVmEc',
         {email, password, returnSecureToken: true}).pipe(catchError((errorRes)=>{
             return this.getErrorHandler(errorRes);
-        }), tap(this.HandleUser));
+        }), tap(this.HandleUser.bind(this)));
     }
 
 
@@ -46,6 +47,7 @@ export class AuthService{
         const expireDate = new Date( new Date().getTime()+ +Response.expireIn*1000);
         //after succefuly response we will get the data here:
         const user= new User(Response.email, Response.localId, Response.idToken, expireDate);
+        this.userSub.next(user);
     }
 
     //bech mandirouch catch error f sign up w f login fi zou2 ndirou une methode khir pour eviter la duplication 
