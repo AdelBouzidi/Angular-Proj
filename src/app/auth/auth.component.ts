@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormControl, FormGroup, NgForm } from "@angular/forms";
-import { AuthService } from "../services/auth.service";
+import { Router } from "@angular/router";
+import { Observable } from "rxjs";
+import { AuthResponseData, AuthService } from "../services/auth.service";
 
 @Component({
     selector: 'app-auth',
@@ -10,11 +12,10 @@ export class AuthComponent implements OnInit{
     isLoginMode=true;
     isLoading = false;
     error: string;
-
     ngOnInit(): void {
     }
 
-    constructor(private authService: AuthService) {
+    constructor(private authService: AuthService, private router: Router) {
     }
     onSwitchMode(){
         this.isLoginMode = !this.isLoginMode;
@@ -26,18 +27,26 @@ export class AuthComponent implements OnInit{
             return;
         }
         this.isLoading = true;
+        // this.error=null ; mahabtch tmchili 
+
+        let authObs: Observable<AuthResponseData>;
         if(this.isLoginMode){
             //Perform Login Request Call
+            authObs = this.authService.login(authForm.value.email, authForm.value.password);
         }else{       // hna rah ndirou khdmtna psq rana ndirou f signup
-            this.authService.signup(authForm.value.email, authForm.value.password).subscribe((response : any) => {
-                console.log(response);
-                this.isLoading = false;
-            }, error => {
-                console.log(error);
-                this.isLoading = false;
-                this.error= 'An Error Ocured';
-            });
+            authObs = this.authService.signup(authForm.value.email, authForm.value.password);
         } 
+
+        // pour eviter la duplication nahina .subscribe men login w signup we dernahom f une methode
+        authObs.subscribe((response : any) => {
+            // console.log(response);
+            this.isLoading = false;
+            // console.log('connexion effectuée');
+            this.router.navigate(['/']);   // : navigate to the HomePage
+        }, (errorMessage) => {
+            this.isLoading = false;
+            this.error=errorMessage;
+        });
         // console.log(authForm.value);
     }
     getPasswordErrors(password : any){   // howa daar hna (password : FormControm)

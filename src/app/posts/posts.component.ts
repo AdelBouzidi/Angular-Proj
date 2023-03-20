@@ -28,7 +28,7 @@ export class PostsComponent implements OnInit{
   getPost(){ //we are getting the data as an object //howa mchatlo bla maa daar hadi:<{[key:string]:Post}>, la ligne suivante
     this.postService.fetchPosts().subscribe(response => { // kona 9adrin ndirou (response :Post[]) mais aslan f service rana nretournou variable de type post[] 
     //  console.log(response);
-     this.posts=response;
+        this.posts=response; 
     }, error => {
       this.error = error.message;
       console.log(error);
