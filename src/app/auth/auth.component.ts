@@ -39,7 +39,7 @@ export class AuthComponent implements OnInit{
 
         // pour eviter la duplication nahina .subscribe men login w signup we dernahom f une methode
         authObs.subscribe((response : any) => {
-            console.log(response);
+            // console.log(response);
             this.isLoading = false;
             // console.log('connexion effectuée');
             this.router.navigate(['/']);   // : navigate to the HomePage
