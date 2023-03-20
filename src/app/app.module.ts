@@ -27,6 +27,7 @@ import { LoggingInterceptorService } from './services/logging-interceptor-servic
 import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './Shared/loading-spinner/loading-spinner.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { AuthTokenInterceptorService } from './services/auth-token-interceptor.service';
 
 // const appRoutes: Routes = [
 //   {path: '', component: HomeComponent}, //localhost;4200/
@@ -77,6 +78,9 @@ import { NavigationComponent } from './navigation/navigation.component';
     {provide: HTTP_INTERCEPTORS, 
       useClass: LoggingInterceptorService, 
       multi: true }, //interceptor 2 (this interceptor will be executed after interceptor 1)
+    {provide: HTTP_INTERCEPTORS, 
+      useClass: AuthTokenInterceptorService, 
+      multi: true }, //interceptor 1
     AuthService, 
     AuthGuardService, 
     DeactivateGuardService, 

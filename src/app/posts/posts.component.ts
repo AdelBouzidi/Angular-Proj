@@ -32,6 +32,7 @@ export class PostsComponent implements OnInit{
     }, error => {
       this.error = error.message;
       console.log(error);
+      console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
     });
   } 
 
