@@ -18,4 +18,10 @@ export class NavigationComponent implements OnInit{
         })
     }
 
+    onLogout(event: Event){
+        event?.preventDefault();
+        this.authService.logout();
+        console.log('logout');
+        // this.router.navigate(['/auth']);
+    }
 }

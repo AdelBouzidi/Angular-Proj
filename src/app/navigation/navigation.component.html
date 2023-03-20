@@ -18,8 +18,8 @@
       </li>
 
       <li class="nav-item" *ngIf="isAuthenticated"> 
-      <a class="nav-link" routerLink="/auth" routerLinkActive="active">
-        Logut
+      <a class="nav-link" href="#" (click)="onLogout($event)" routerLinkActive="active">
+        Logout
       </a> 
       </li>
 

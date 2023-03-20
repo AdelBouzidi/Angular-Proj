@@ -16,31 +16,43 @@ export class PostService{
     }
 
     fetchPosts(){
+      return this.http.get<{[key:string]:Post}>('https://ng-complete-guide-f9175-default-rtdb.europe-west1.firebasedatabase.app/posts.json?custom=Hai'
+      ).pipe(
+        map(response => {
+      //   console.log(response);
+        let posts: Post[] = [];
+        for(let key in response){ // in, not of, because it is an object.
+          // console.log({...response[key], key});
+          posts.push({...response[key], key});
+          // console.log(posts);
+        }
+        return posts;
+      }));
+    }
+
+
+      // fetchPosts(){
       // this.authService.userSub.subscribe(user => {
       //   console.log(user);
       // }); ndirou pipe 99al parce que we need to take just the token:
-      return this.authService.userSub.pipe(take(1), switchMap(user => { //lah derna return hna !!!!!!!!!!!!!!!!!!!!!!!
-        let searchParams= new HttpParams();
-        searchParams= searchParams.append('auth',user!.token!);
-        return this.http.get<{[key:string]:Post}>('https://ng-complete-guide-f9175-default-rtdb.europe-west1.firebasedatabase.app/posts.json?custom=Hai', 
-        {
-          params: searchParams,
-        }
-        ).pipe(
-          map(response => {
-        //   console.log(response);
-          let posts: Post[] = [];
-          for(let key in response){ // in, not of, because it is an object.
-            // console.log({...response[key], key});
-            posts.push({...response[key], key});
-            // console.log(posts);
-          }
-          return posts;
-        }));;
-      }));
-
-
-
+      // return this.authService.userSub.pipe(take(1), switchMap(user => { //lah derna return hna !!!!!!!!!!!!!!!!!!!!!!!
+      //   let searchParams= new HttpParams();
+      //   searchParams= searchParams.append('auth',user!.token!);
+      //   return this.http.get<{[key:string]:Post}>('https://ng-complete-guide-f9175-default-rtdb.europe-west1.firebasedatabase.app/posts.json?custom=Hai', 
+      //   {
+      //     params: searchParams,
+      //   }
+      //   );
+      // }),map(response => {
+      //   //   console.log(response);
+      //     let posts: Post[] = [];
+      //     for(let key in response){ // in, not of, because it is an object.
+      //       // console.log({...response[key], key});
+      //       posts.push({...response[key], key});
+      //       // console.log(posts);
+      //     }
+      //     return posts;
+      //   }));
       // let searchParams= new HttpParams();
       // searchParams= searchParams.append('custom','Hai');
       // searchParams= searchParams.append('name','Leela');
@@ -56,7 +68,7 @@ export class PostService{
         //   }
         //   return posts;
         // }));
-    }
+    
 
 
 
