@@ -11,7 +11,7 @@ import { AuthResponseData, AuthService } from "../services/auth.service";
 export class AuthComponent implements OnInit{
     isLoginMode=true;
     isLoading = false;
-    error: string;
+    error: any;
     ngOnInit(): void {
     }
 
