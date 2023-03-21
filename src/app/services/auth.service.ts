@@ -53,7 +53,6 @@ export class AuthService{
         this.userSub.next(user);
         localStorage.setItem('userData',JSON.stringify(user)); // JSON.stringify it will convert the object "user" into string.
         this.autoLogout(+response.expiresIn*1000); //logout apres une heure
-
     }
 
     //bech mandirouch catch error f sign up w f login fi zou2 ndirou une methode khir pour eviter la duplication 
@@ -92,6 +91,7 @@ export class AuthService{
     }
 
     logout(){
+        this.isLoggedIn=false;
         this.userSub.next(null);  
         this.router.navigate(['/auth']);
         // localStorage.clear(); // delete all item of localStorage.

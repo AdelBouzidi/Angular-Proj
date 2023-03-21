@@ -9,6 +9,7 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
 import { PostsComponent } from "./posts/posts.component";
 import { ReactiveFormsComponent } from "./reactive-forms/reactive-forms.component";
 import { AuthGuardService } from "./services/guardes/auth-guard.service";
+import { AuthGuard } from "./services/guardes/auth.guard";
 import { DeactivateGuardService } from "./services/guardes/deactivat-guard.service";
 import { userResolveService } from "./services/resolvers/user-resolve.service";
 import { TemplateFormComponent } from "./template-form/template-form.component";
@@ -35,7 +36,7 @@ const appRoutes: Routes = [
     {path: 'templateform', component: TemplateFormComponent },
     {path: 'reactiveform', component: ReactiveFormsComponent },
     {path: 'filterpipes', component: FilterpipesComponent }, 
-    {path: 'posts', component: PostsComponent }, 
+    {path: 'posts', component: PostsComponent, canActivate: [AuthGuard] }, 
     {path: 'user', component: UserComponent},
     {path: 'auth', component: AuthComponent},
 
