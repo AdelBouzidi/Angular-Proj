@@ -28,6 +28,7 @@ import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './Shared/loading-spinner/loading-spinner.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { AuthTokenInterceptorService } from './services/auth-token-interceptor.service';
+import { AlertModalComponent } from './Shared/alert-modal/alert-modal.component';
 
 // const appRoutes: Routes = [
 //   {path: '', component: HomeComponent}, //localhost;4200/
@@ -67,6 +68,7 @@ import { AuthTokenInterceptorService } from './services/auth-token-interceptor.s
     AuthComponent,
     LoadingSpinnerComponent,
     NavigationComponent,
+    AlertModalComponent,
   ],
   imports: [
     BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule
