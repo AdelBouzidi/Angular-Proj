@@ -16,9 +16,10 @@ export class AppComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit(): void {
-    this.userAddedSubscription = this.userService.userAddeEvent.subscribe(data => {
-      this.userAdded = data;
-    })
+    // this.userAddedSubscription = this.userService.userAddeEvent.subscribe(data => {
+    //   this.userAdded = data;
+    // })
+    this.authService.autoLogin(); // bech ki ndirou actualiser tasra login en utilisant localstorage.
   }
 
   onLoginClick(){
