@@ -1,7 +1,7 @@
-import { Component, ComponentFactoryResolver, OnInit, ViewChild } from "@angular/core";
+import { Component, ComponentFactoryResolver, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
-import { Observable } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 import { AuthResponseData, AuthService } from "../services/auth.service";
 import { AlertModalComponent } from "../Shared/alert-modal/alert-modal.component";
 import { PlaceholderDirective } from "../Shared/placeholder.directive";
@@ -10,12 +10,12 @@ import { PlaceholderDirective } from "../Shared/placeholder.directive";
     selector: 'app-auth',
     templateUrl: './auth.component.html',    
 }) 
-export class AuthComponent implements OnInit{
+export class AuthComponent implements OnInit, OnDestroy{
     isLoginMode=true;
     isLoading = false;
     error: any;
     @ViewChild(PlaceholderDirective) alertHost: PlaceholderDirective;
-
+    closeSub : Subscription;
     ngOnInit(): void {
     }
 
@@ -55,11 +55,22 @@ export class AuthComponent implements OnInit{
         // console.log(authForm.value);
     }
 
-    showErrorAlert(message: string){
+    showErrorAlert(message: string | null){
         // const alertModal = new AlertModalComponent(); // chaque component hia classe donc n9drou ncriyou mnha (instance de classe)
         const componentFactory = this.ComponentFactoryResolver.resolveComponentFactory(AlertModalComponent);
         this.alertHost.ViewContainerRef.clear(); //derna .clear bech yla kechma kaan kayn fel viewcontainer ref yetsupprima (like this view container ref will be empty)
-        this.alertHost.ViewContainerRef.createComponent(componentFactory);
+        // this.alertHost.ViewContainerRef.createComponent(componentFactory);
+        const componentRef = this.alertHost.ViewContainerRef.createComponent(componentFactory);
+        componentRef.instance.error= message;
+        // componentRef.instance.close; hakda matemchich parceque close howa observable (@Output() close = new EventEmitter<void>();)
+        this.closeSub = componentRef.instance.close.subscribe(() => {
+            this.closeSub.unsubscribe();
+            this.alertHost.ViewContainerRef.clear();
+        });
+    }
+
+    ngOnDestroy(): void {
+        this.closeSub.unsubscribe();
     }
 
     getPasswordErrors(password : any){   // howa daar hna (password : FormControm)

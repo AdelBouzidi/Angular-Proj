@@ -69,7 +69,8 @@ import { PlaceholderDirective } from './Shared/placeholder.directive';
     AuthComponent,
     LoadingSpinnerComponent,
     NavigationComponent,
-    // AlertModalComponent, this component rana ndiroulha adding dynamicly b type script video 121. donc machi lazem tdiclariha hna , diclariha f entryComponent ltaht
+    // AlertModalComponent, this component rana ndiroulha adding dynamicly b type script video 121. donc machi lazem 
+    //tdiclariha hna , diclariha f entryComponent ltaht
     PlaceholderDirective,
   ],
   imports: [
