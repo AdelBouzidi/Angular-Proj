@@ -29,7 +29,7 @@ import { LoadingSpinnerComponent } from './Shared/loading-spinner/loading-spinne
 import { NavigationComponent } from './navigation/navigation.component';
 import { AuthTokenInterceptorService } from './services/auth-token-interceptor.service';
 import { AlertModalComponent } from './Shared/alert-modal/alert-modal.component';
-import { PlaceHolderDirective } from './Shared/placeholder.directive';
+import { PlaceholderDirective } from './Shared/placeholder.directive';
 
 // const appRoutes: Routes = [
 //   {path: '', component: HomeComponent}, //localhost;4200/
@@ -69,12 +69,13 @@ import { PlaceHolderDirective } from './Shared/placeholder.directive';
     AuthComponent,
     LoadingSpinnerComponent,
     NavigationComponent,
-    AlertModalComponent,
-    PlaceHolderDirective,
+    // AlertModalComponent, this component rana ndiroulha adding dynamicly b type script video 121. donc machi lazem tdiclariha hna , diclariha f entryComponent ltaht
+    PlaceholderDirective,
   ],
   imports: [
     BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule
   ],
+  entryComponents: [AlertModalComponent],
   providers: [
     {provide: HTTP_INTERCEPTORS, 
       useClass: AuthInterceptorService, 

@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { AuthResponseData, AuthService } from "../services/auth.service";
 import { AlertModalComponent } from "../Shared/alert-modal/alert-modal.component";
+import { PlaceholderDirective } from "../Shared/placeholder.directive";
 
 @Component({
     selector: 'app-auth',
@@ -13,6 +14,8 @@ export class AuthComponent implements OnInit{
     isLoginMode=true;
     isLoading = false;
     error: any;
+    @ViewChild(PlaceholderDirective) alertHost: PlaceholderDirective;
+
     ngOnInit(): void {
     }
 
@@ -55,6 +58,8 @@ export class AuthComponent implements OnInit{
     showErrorAlert(message: string){
         // const alertModal = new AlertModalComponent(); // chaque component hia classe donc n9drou ncriyou mnha (instance de classe)
         const componentFactory = this.ComponentFactoryResolver.resolveComponentFactory(AlertModalComponent);
+        this.alertHost.ViewContainerRef.clear(); //derna .clear bech yla kechma kaan kayn fel viewcontainer ref yetsupprima (like this view container ref will be empty)
+        this.alertHost.ViewContainerRef.createComponent(componentFactory);
     }
 
     getPasswordErrors(password : any){   // howa daar hna (password : FormControm)
