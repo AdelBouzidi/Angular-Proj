@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { FormControl, FormGroup, NgForm } from "@angular/forms";
+import { Component, ComponentFactoryResolver, OnInit, ViewChild } from "@angular/core";
+import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { AuthResponseData, AuthService } from "../services/auth.service";
+import { AlertModalComponent } from "../Shared/alert-modal/alert-modal.component";
 
 @Component({
     selector: 'app-auth',
@@ -15,7 +16,7 @@ export class AuthComponent implements OnInit{
     ngOnInit(): void {
     }
 
-    constructor(private authService: AuthService, private router: Router) {
+    constructor(private authService: AuthService, private router: Router, private ComponentFactoryResolver: ComponentFactoryResolver) {
     }
     onSwitchMode(){
         this.isLoginMode = !this.isLoginMode;
@@ -46,9 +47,16 @@ export class AuthComponent implements OnInit{
         }, (errorMessage) => {
             this.isLoading = false;
             this.error=errorMessage;
+            this.showErrorAlert(errorMessage);
         });
         // console.log(authForm.value);
     }
+
+    showErrorAlert(message: string){
+        // const alertModal = new AlertModalComponent(); // chaque component hia classe donc n9drou ncriyou mnha (instance de classe)
+        const componentFactory = this.ComponentFactoryResolver.resolveComponentFactory(AlertModalComponent);
+    }
+
     getPasswordErrors(password : any){   // howa daar hna (password : FormControm)
         if(password.errors?.['required']){
             return 'Password Required';     
