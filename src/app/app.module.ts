@@ -75,7 +75,12 @@ import { UserModule } from './user.module';
     PlaceholderDirective,
   ],
   imports: [  //Définit la liste des dépendances du module. Il s'agit généralement de la liste des modules contenant les composants utilisés par les composants de la section declarations.
-    BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, UserModule,
+    BrowserModule, 
+    UserModule,
+    AppRoutingModule, 
+    FormsModule, 
+    ReactiveFormsModule, 
+    HttpClientModule, 
   ],
   entryComponents: [AlertModalComponent],
   providers: [
