@@ -31,9 +31,9 @@ const appRoutes: Routes = [
     {path: 'templateform', component: TemplateFormComponent },
     {path: 'reactiveform', component: ReactiveFormsComponent },
     {path: 'filterpipes', component: FilterpipesComponent }, 
-    {path: 'posts', component: PostsComponent, canActivate: [AuthGuard] }, 
+    // {path: 'posts', component: PostsComponent, canActivate: [AuthGuard] }, 
     {path: 'user', component: UserComponent},
-    {path: 'auth', component: AuthComponent},
+    // {path: 'auth', component: AuthComponent},
 
     
     // { path: '**', pathMatch: 'full',

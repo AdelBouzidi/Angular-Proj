@@ -21,16 +21,16 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
 import { FilterpipesComponent } from './filterpipes/filterpipes.component';
 import { ShortenPipe } from './Pipes/shorten.pipe';
 import { FilterPipe } from './Pipes/filter.pipe';
-import { PostsComponent } from './posts/posts.component';
 import { AuthInterceptorService } from './services/auth-interceptor-service';
 import { LoggingInterceptorService } from './services/logging-interceptor-service';  
-import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './Shared/loading-spinner/loading-spinner.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { AuthTokenInterceptorService } from './services/auth-token-interceptor.service';
 import { AlertModalComponent } from './Shared/alert-modal/alert-modal.component';
 import { PlaceholderDirective } from './Shared/placeholder.directive';
 import { UserModule } from './user.module';
+import { PostModule } from './post.module';
+import { AuthModule } from './auth.module';
 
 // const appRoutes: Routes = [
 //   {path: '', component: HomeComponent}, //localhost;4200/
@@ -66,9 +66,9 @@ import { UserModule } from './user.module';
     FilterpipesComponent,
     ShortenPipe,
     FilterPipe,
-    PostsComponent,
-    AuthComponent,
-    LoadingSpinnerComponent,
+    // PostsComponent,
+    // AuthComponent,
+    // LoadingSpinnerComponent,
     NavigationComponent,
     // AlertModalComponent, this component rana ndiroulha adding dynamicly b type script video 121. donc machi lazem 
     //tdiclariha hna , diclariha f entryComponent ltaht
@@ -77,6 +77,8 @@ import { UserModule } from './user.module';
   imports: [  //Définit la liste des dépendances du module. Il s'agit généralement de la liste des modules contenant les composants utilisés par les composants de la section declarations.
     BrowserModule, 
     UserModule,
+    PostModule,
+    AuthModule,
     AppRoutingModule, 
     FormsModule, 
     ReactiveFormsModule, 
