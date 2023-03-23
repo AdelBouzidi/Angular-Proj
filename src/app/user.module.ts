@@ -1,3 +1,4 @@
+import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
@@ -14,6 +15,7 @@ import { UsersComponent } from "./users/users.component";
     imports: [
         FormsModule, //parce que sta3malnaah f users bech derna ngModel
         RouterModule, //parce f users on a utilisé routerOutlet
+        CommonModule,
     ],
     exports: [
         UserComponent,
