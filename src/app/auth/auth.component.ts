@@ -10,7 +10,7 @@ import { PlaceholderDirective } from "../Shared/placeholder.directive";
     selector: 'app-auth',
     templateUrl: './auth.component.html',    
 }) 
-export class AuthComponent implements OnInit, OnDestroy{
+export class AuthComponent implements OnInit{
     isLoginMode=true;
     isLoading = false;
     error: any;
@@ -21,6 +21,7 @@ export class AuthComponent implements OnInit, OnDestroy{
 
     constructor(private authService: AuthService, private router: Router, private ComponentFactoryResolver: ComponentFactoryResolver) {
     }
+    
     onSwitchMode(){
         this.isLoginMode = !this.isLoginMode;
     }
@@ -69,9 +70,11 @@ export class AuthComponent implements OnInit, OnDestroy{
         });
     }
 
-    ngOnDestroy(): void {
-        this.closeSub.unsubscribe();
-    }
+    // ngOnDestroy(): void {
+    //     this.closeSub.unsubscribe();
+    // }
+
+
 
     getPasswordErrors(password : any){   // howa daar hna (password : FormControm)
         if(password.errors?.['required']){
