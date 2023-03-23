@@ -2,33 +2,28 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AuthComponent } from "./auth/auth.component";
 import { CategoriesComponent } from "./categories/categories.component";
-import { EditUserComponent } from "./edit-user/edit-user.component";
 import { FilterpipesComponent } from "./filterpipes/filterpipes.component";
 import { HomeComponent } from "./home/home.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { PostsComponent } from "./posts/posts.component";
 import { ReactiveFormsComponent } from "./reactive-forms/reactive-forms.component";
-import { AuthGuardService } from "./services/guardes/auth-guard.service";
 import { AuthGuard } from "./services/guardes/auth.guard";
-import { DeactivateGuardService } from "./services/guardes/deactivat-guard.service";
-import { userResolveService } from "./services/resolvers/user-resolve.service";
 import { TemplateFormComponent } from "./template-form/template-form.component";
 import { UserComponent } from "./user/user.component";
-import { UsersComponent } from "./users/users.component";
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent, data: {page:1, search: 'leela'}}, //localhost;4200/
    
-    {path: 'users', 
-    component: UsersComponent,
-    // canActivate: [AuthGuardService],
-    canActivateChild: [AuthGuardService],
-    children: [{path: ':id/:name', component: UserComponent},
-    {path: ':id/:name/edit', component: EditUserComponent, 
-    canDeactivate: [DeactivateGuardService],
-    resolve: {user : userResolveService} 
-  }],
-    },
+  //   {path: 'users', 
+  //   component: UsersComponent,
+  //   // canActivate: [AuthGuardService],
+  //   canActivate: [AuthGuard],
+  //   children: [{path: ':id/:name', component: UserComponent},
+  //   {path: ':id/:name/edit', component: EditUserComponent, 
+  //   canDeactivate: [DeactivateGuardService],
+  //   resolve: {user : userResolveService} 
+  // }],
+  //   },
     
   
     // {path: 'users/:id/:name', component:UserComponent},

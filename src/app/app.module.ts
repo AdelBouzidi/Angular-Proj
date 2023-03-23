@@ -3,11 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http' //http
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { UsersComponent } from './users/users.component';
+// import { UsersComponent } from './users/users.component';
 import { CategoriesComponent } from './categories/categories.component';
 // import { RouterModule, Routes } from '@angular/router';
-import { UserComponent } from './user/user.component';
-import { EditUserComponent } from './edit-user/edit-user.component';
+// import { UserComponent } from './user/user.component';
+// import { EditUserComponent } from './edit-user/edit-user.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/auth.service';
@@ -29,6 +29,8 @@ import { LoadingSpinnerComponent } from './Shared/loading-spinner/loading-spinne
 import { NavigationComponent } from './navigation/navigation.component';
 import { AuthTokenInterceptorService } from './services/auth-token-interceptor.service';
 import { AlertModalComponent } from './Shared/alert-modal/alert-modal.component';
+import { PlaceholderDirective } from './Shared/placeholder.directive';
+import { UserModule } from './user.module';
 
 // const appRoutes: Routes = [
 //   {path: '', component: HomeComponent}, //localhost;4200/
@@ -51,13 +53,13 @@ import { AlertModalComponent } from './Shared/alert-modal/alert-modal.component'
 // ];
  
 @NgModule({
-  declarations: [
+  declarations: [ // we are mentioning here : components, custum directives, custum pipes
     AppComponent,
     HomeComponent,
-    UsersComponent,
+    // UsersComponent,
     CategoriesComponent,
-    UserComponent,
-    EditUserComponent,
+    // UserComponent,
+    // EditUserComponent,
     PageNotFoundComponent,
     TemplateFormComponent,
     ReactiveFormsComponent,
@@ -68,11 +70,19 @@ import { AlertModalComponent } from './Shared/alert-modal/alert-modal.component'
     AuthComponent,
     LoadingSpinnerComponent,
     NavigationComponent,
-    AlertModalComponent,
+    // AlertModalComponent, this component rana ndiroulha adding dynamicly b type script video 121. donc machi lazem 
+    //tdiclariha hna , diclariha f entryComponent ltaht
+    PlaceholderDirective,
   ],
-  imports: [
-    BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule
+  imports: [  //Définit la liste des dépendances du module. Il s'agit généralement de la liste des modules contenant les composants utilisés par les composants de la section declarations.
+    BrowserModule, 
+    UserModule,
+    AppRoutingModule, 
+    FormsModule, 
+    ReactiveFormsModule, 
+    HttpClientModule, 
   ],
+  entryComponents: [AlertModalComponent],
   providers: [
     {provide: HTTP_INTERCEPTORS, 
       useClass: AuthInterceptorService, 

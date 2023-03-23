@@ -1,3 +1,6 @@
+<!-- <div appPlaceHolder ></div> sinon : -->
+<ng-template appPlaceHolder></ng-template>
+
 <div class="row">
     <div class="col-md-12">
         <div *ngIf="isLoading" class="text-center my-4">
@@ -7,7 +10,7 @@
             <span>{{error}}</span>
         </div> -->
 
-        <app-alert-modal [error]="error" *ngIf="error" (close)="error=null;"></app-alert-modal>
+        <!-- <app-alert-modal [error]="error" *ngIf="error" (close)="error=null;"></app-alert-modal> video120--> 
         <!-- récupirer close from the output of alert model component .ts , mwalfin ndirou ="methode($event)" bech nrecupirou wech b3athna mais hna rana recupirina close as parametre vide -->
 
         <form #authForm="ngForm" (ngSubmit)="onFormSubmit(authForm)" *ngIf="!isLoading">
