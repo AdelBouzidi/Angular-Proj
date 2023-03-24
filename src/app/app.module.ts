@@ -10,24 +10,17 @@ import { CategoriesComponent } from './categories/categories.component';
 // import { EditUserComponent } from './edit-user/edit-user.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthService } from './services/auth.service';
-import { AuthGuardService } from './services/guardes/auth-guard.service';
-import { DeactivateGuardService } from './services/guardes/deactivat-guard.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { userResolveService } from './services/resolvers/user-resolve.service';
-import { UserService } from './services/user.service';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
-import { AuthInterceptorService } from './services/auth-interceptor-service';
-import { LoggingInterceptorService } from './services/logging-interceptor-service';  
 import { NavigationComponent } from './navigation/navigation.component';
-import { AuthTokenInterceptorService } from './services/auth-token-interceptor.service';
 import { AlertModalComponent } from './Shared/alert-modal/alert-modal.component';
 import { PlaceholderDirective } from './Shared/placeholder.directive';
 import { UserModule } from './user.module';
 import { PostModule } from './post.module';
 import { AuthModule } from './auth.module';
 import { FilterModule } from './filter.module';
+import { CoreModule } from './core.module';
 
 // const appRoutes: Routes = [
 //   {path: '', component: HomeComponent}, //localhost;4200/
@@ -73,6 +66,7 @@ import { FilterModule } from './filter.module';
   ],
   imports: [  //Définit la liste des dépendances du module. Il s'agit généralement de la liste des modules contenant les composants utilisés par les composants de la section declarations.
     BrowserModule, 
+    CoreModule,
     UserModule,
     PostModule,
     AuthModule,
@@ -83,21 +77,22 @@ import { FilterModule } from './filter.module';
     HttpClientModule, 
   ],
   entryComponents: [AlertModalComponent],
-  providers: [
-    {provide: HTTP_INTERCEPTORS, 
-      useClass: AuthInterceptorService, 
-      multi: true }, //interceptor 1
-    {provide: HTTP_INTERCEPTORS, 
-      useClass: LoggingInterceptorService, 
-      multi: true }, //interceptor 2 (this interceptor will be executed after interceptor 1)
-    {provide: HTTP_INTERCEPTORS, 
-      useClass: AuthTokenInterceptorService, 
-      multi: true }, //interceptor 1
-    AuthService, 
-    AuthGuardService, 
-    DeactivateGuardService, 
-    userResolveService, 
-    UserService],
+  // providers: [
+    // {provide: HTTP_INTERCEPTORS, 
+    //   useClass: AuthInterceptorService, 
+    //   multi: true }, //interceptor 1
+    // {provide: HTTP_INTERCEPTORS, 
+    //   useClass: LoggingInterceptorService, 
+    //   multi: true }, //interceptor 2 (this interceptor will be executed after interceptor 1)
+    // {provide: HTTP_INTERCEPTORS, 
+    //   useClass: AuthTokenInterceptorService, 
+    //   multi: true }, //interceptor 1
+    // AuthService, 
+    // AuthGuardService, 
+    // DeactivateGuardService, 
+    // userResolveService, 
+    // UserService
+  // ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
