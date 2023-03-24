@@ -30,7 +30,7 @@ const appRoutes: Routes = [
     {path: 'categories', component: CategoriesComponent },
     {path: 'templateform', component: TemplateFormComponent },
     {path: 'reactiveform', component: ReactiveFormsComponent },
-    {path: 'filterpipes', component: FilterpipesComponent }, 
+    // {path: 'filterpipes', component: FilterpipesComponent }, 
     // {path: 'posts', component: PostsComponent, canActivate: [AuthGuard] }, 
     {path: 'user', component: UserComponent},
     // {path: 'auth', component: AuthComponent},

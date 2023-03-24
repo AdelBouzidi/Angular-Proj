@@ -18,12 +18,8 @@ import { userResolveService } from './services/resolvers/user-resolve.service';
 import { UserService } from './services/user.service';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
-import { FilterpipesComponent } from './filterpipes/filterpipes.component';
-import { ShortenPipe } from './Pipes/shorten.pipe';
-import { FilterPipe } from './Pipes/filter.pipe';
 import { AuthInterceptorService } from './services/auth-interceptor-service';
 import { LoggingInterceptorService } from './services/logging-interceptor-service';  
-import { LoadingSpinnerComponent } from './Shared/loading-spinner/loading-spinner.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { AuthTokenInterceptorService } from './services/auth-token-interceptor.service';
 import { AlertModalComponent } from './Shared/alert-modal/alert-modal.component';
@@ -31,6 +27,7 @@ import { PlaceholderDirective } from './Shared/placeholder.directive';
 import { UserModule } from './user.module';
 import { PostModule } from './post.module';
 import { AuthModule } from './auth.module';
+import { FilterModule } from './filter.module';
 
 // const appRoutes: Routes = [
 //   {path: '', component: HomeComponent}, //localhost;4200/
@@ -63,9 +60,9 @@ import { AuthModule } from './auth.module';
     PageNotFoundComponent,
     TemplateFormComponent,
     ReactiveFormsComponent,
-    FilterpipesComponent,
-    ShortenPipe,
-    FilterPipe,
+    // FilterpipesComponent,
+    // ShortenPipe,
+    // FilterPipe,
     // PostsComponent,
     // AuthComponent,
     // LoadingSpinnerComponent,
@@ -79,6 +76,7 @@ import { AuthModule } from './auth.module';
     UserModule,
     PostModule,
     AuthModule,
+    FilterModule,
     AppRoutingModule, 
     FormsModule, 
     ReactiveFormsModule, 
