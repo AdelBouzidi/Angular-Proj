@@ -7,7 +7,8 @@ import { userResolveService } from "./services/resolvers/user-resolve.service";
 import { UserComponent } from "./user/user.component";
 import { UsersComponent } from "./users/users.component";
 const userRoutes: Routes =[ 
-    {path: 'users', 
+    // {path: 'users', 
+    {path: '', //parce que derna Lazy Loading l hada el module donc vider le path hna parce que fapp-routing rana dayrin users fel path, video_131
     component: UsersComponent,
     // canActivate: [AuthGuardService],
     canActivate: [AuthGuard],

@@ -13,6 +13,9 @@ import { UserComponent } from "./user/user.component";
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent, data: {page:1, search: 'leela'}}, //localhost;4200/
+    {path: 'users', loadChildren: () => import('./user.module').then(m => m.UserModule)},
+    {path: 'posts', loadChildren: () => import('./post.module').then(m => m.PostModule)},
+
    
   //   {path: 'users', 
   //   component: UsersComponent,

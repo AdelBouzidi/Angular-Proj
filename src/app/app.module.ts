@@ -67,8 +67,8 @@ import { CoreModule } from './core.module';
   imports: [  //Définit la liste des dépendances du module. Il s'agit généralement de la liste des modules contenant les composants utilisés par les composants de la section declarations.
     BrowserModule, 
     CoreModule,
-    UserModule,
-    PostModule,
+    // UserModule,
+    // PostModule,
     AuthModule,
     FilterModule,
     AppRoutingModule, 
