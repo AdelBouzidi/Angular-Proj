@@ -13,6 +13,9 @@ import { UserComponent } from "./user/user.component";
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent, data: {page:1, search: 'leela'}}, //localhost;4200/
+    {path: 'users', loadChildren: () => import('./user.module').then(m => m.UserModule)},
+    {path: 'posts', loadChildren: () => import('./post.module').then(m => m.PostModule)},
+
    
   //   {path: 'users', 
   //   component: UsersComponent,
@@ -30,7 +33,7 @@ const appRoutes: Routes = [
     {path: 'categories', component: CategoriesComponent },
     {path: 'templateform', component: TemplateFormComponent },
     {path: 'reactiveform', component: ReactiveFormsComponent },
-    {path: 'filterpipes', component: FilterpipesComponent }, 
+    // {path: 'filterpipes', component: FilterpipesComponent }, 
     // {path: 'posts', component: PostsComponent, canActivate: [AuthGuard] }, 
     {path: 'user', component: UserComponent},
     // {path: 'auth', component: AuthComponent},

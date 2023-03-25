@@ -14,7 +14,9 @@
 
 <ul class="nav flex-column">
     <li class="nav-item" *ngFor="let user of usersData">
-        <a [routerLink]="['/users', 1, 'Rama']" [queryParams]="{page: 1, search: user}" class="nav-link">Get {{user}} Détails</a> 
+        <a [routerLink]="['/users', 1, 'Rama']" [queryParams]="{page: 1, search: user}" class="nav-link">
+            Get {{user | Shorten:3 }} Détails
+        </a> 
     </li>
     <!-- <li>
         <a [routerLink]="['/users', 2, 'Krishna']" [queryParams]="{page: 1, search: 'Krishna'}" class="nav-link">Get Krishna Détails</a>

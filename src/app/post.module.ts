@@ -13,7 +13,9 @@ import { AuthGuard } from "./services/guardes/auth.guard";
         CommonModule,
         ReactiveFormsModule,
         RouterModule.forChild([
-            {path: 'posts', component: PostsComponent, canActivate: [AuthGuard] }, 
+            // {path: 'posts', component: PostsComponent, canActivate: [AuthGuard] }, 
+            {path: '', component: PostsComponent, canActivate: [AuthGuard] }, 
+            //parce que derna Lazy Loading l hada el module donc vider le path hna parce que fapp-routing rana dayrin posts fel path
         ]), // derna hakda bla mancriyou module de routing séparé lel post
         
     ]

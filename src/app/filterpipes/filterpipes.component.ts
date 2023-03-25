@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DummyService } from '../services/dummy.service';
 
 @Component({
   selector: 'app-filterpipes',
@@ -6,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filterpipes.component.css']
 })
 export class FilterpipesComponent implements OnInit{
+
+
+  constructor() {    
+  }
+  ngOnInit(): void {
+  }
 
   appStatus = new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -29,8 +36,7 @@ export class FilterpipesComponent implements OnInit{
   },
   ];   
   
-  ngOnInit(): void {
-  }
+
 
   onAddUser(){
     this.users.push({

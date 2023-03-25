@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from './services/auth.service';
+import { DummyService } from './services/dummy.service';
 import { UserService } from './services/user.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class AppComponent implements OnInit, OnDestroy{
   title = 'angularrouting';
   userAdded = false;
   userAddedSubscription: Subscription = new Subscription;
-  constructor(private authService: AuthService, private userService: UserService) {    
+  constructor(private authService: AuthService, private userService: UserService, private DummySerivice: DummyService) {    
   }
 
   ngOnInit(): void {
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit, OnDestroy{
     //   this.userAdded = data;
     // })
     this.authService.autoLogin(); // bech ki ndirou actualiser tasra login en utilisant localstorage.
+    this.DummySerivice.printLog('Hello From App Component');
   }
 
   onLoginClick(){

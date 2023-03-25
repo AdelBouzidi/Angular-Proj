@@ -10,27 +10,18 @@ import { CategoriesComponent } from './categories/categories.component';
 // import { EditUserComponent } from './edit-user/edit-user.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthService } from './services/auth.service';
-import { AuthGuardService } from './services/guardes/auth-guard.service';
-import { DeactivateGuardService } from './services/guardes/deactivat-guard.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { userResolveService } from './services/resolvers/user-resolve.service';
-import { UserService } from './services/user.service';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
-import { FilterpipesComponent } from './filterpipes/filterpipes.component';
-import { ShortenPipe } from './Pipes/shorten.pipe';
-import { FilterPipe } from './Pipes/filter.pipe';
-import { AuthInterceptorService } from './services/auth-interceptor-service';
-import { LoggingInterceptorService } from './services/logging-interceptor-service';  
-import { LoadingSpinnerComponent } from './Shared/loading-spinner/loading-spinner.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import { AuthTokenInterceptorService } from './services/auth-token-interceptor.service';
 import { AlertModalComponent } from './Shared/alert-modal/alert-modal.component';
 import { PlaceholderDirective } from './Shared/placeholder.directive';
 import { UserModule } from './user.module';
 import { PostModule } from './post.module';
 import { AuthModule } from './auth.module';
+import { FilterModule } from './filter.module';
+import { CoreModule } from './core.module';
+import { DummyService } from './services/dummy.service';
 
 // const appRoutes: Routes = [
 //   {path: '', component: HomeComponent}, //localhost;4200/
@@ -63,9 +54,9 @@ import { AuthModule } from './auth.module';
     PageNotFoundComponent,
     TemplateFormComponent,
     ReactiveFormsComponent,
-    FilterpipesComponent,
-    ShortenPipe,
-    FilterPipe,
+    // FilterpipesComponent,
+    // ShortenPipe,
+    // FilterPipe,
     // PostsComponent,
     // AuthComponent,
     // LoadingSpinnerComponent,
@@ -76,30 +67,36 @@ import { AuthModule } from './auth.module';
   ],
   imports: [  //Définit la liste des dépendances du module. Il s'agit généralement de la liste des modules contenant les composants utilisés par les composants de la section declarations.
     BrowserModule, 
-    UserModule,
-    PostModule,
+    CoreModule,
+    // UserModule,
+    // PostModule,
     AuthModule,
+    FilterModule,
     AppRoutingModule, 
     FormsModule, 
     ReactiveFormsModule, 
     HttpClientModule, 
   ],
   entryComponents: [AlertModalComponent],
-  providers: [
-    {provide: HTTP_INTERCEPTORS, 
-      useClass: AuthInterceptorService, 
-      multi: true }, //interceptor 1
-    {provide: HTTP_INTERCEPTORS, 
-      useClass: LoggingInterceptorService, 
-      multi: true }, //interceptor 2 (this interceptor will be executed after interceptor 1)
-    {provide: HTTP_INTERCEPTORS, 
-      useClass: AuthTokenInterceptorService, 
-      multi: true }, //interceptor 1
-    AuthService, 
-    AuthGuardService, 
-    DeactivateGuardService, 
-    userResolveService, 
-    UserService],
+  // providers: [
+    // {provide: HTTP_INTERCEPTORS, 
+    //   useClass: AuthInterceptorService, 
+    //   multi: true }, //interceptor 1
+    // {provide: HTTP_INTERCEPTORS, 
+    //   useClass: LoggingInterceptorService, 
+    //   multi: true }, //interceptor 2 (this interceptor will be executed after interceptor 1)
+    // {provide: HTTP_INTERCEPTORS, 
+    //   useClass: AuthTokenInterceptorService, 
+    //   multi: true }, //interceptor 1
+    // AuthService, 
+    // AuthGuardService, 
+    // DeactivateGuardService, 
+    // userResolveService, 
+    // UserService
+  // ],
+  providers:[
+    DummyService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
