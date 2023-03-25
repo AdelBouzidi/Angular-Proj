@@ -4,6 +4,7 @@ import { FormsModule } from "@angular/forms";
 // import { RouterModule } from "@angular/router";
 import { EditUserComponent } from "./edit-user/edit-user.component";
 import { ShortenPipe } from "./Pipes/shorten.pipe";
+import { DummyService } from "./services/dummy.service";
 import { SharedModule } from "./shared.module";
 import { UserRoutingModule } from "./user-routing.module";
 import { UserComponent } from "./user/user.component";
@@ -21,12 +22,16 @@ import { UsersComponent } from "./users/users.component";
         UserRoutingModule,
         // CommonModule,
         SharedModule,
+    ],
+    providers: [
+        DummyService,
     ]
     // exports: [
     //     UserComponent,
     //     EditUserComponent,
     //     UsersComponent,
     // ] 
+
 }) 
 export class UserModule{
 

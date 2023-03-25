@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 // import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { FilterpipesComponent } from "./filterpipes/filterpipes.component";
+import { DummyService } from "./services/dummy.service";
 // import { FilterPipe } from "./Pipes/filter.pipe";
 // import { ShortenPipe } from "./Pipes/shorten.pipe";
 import { SharedModule } from "./shared.module";
@@ -20,7 +21,8 @@ import { SharedModule } from "./shared.module";
         RouterModule.forChild([
             {path: 'filterpipes', component: FilterpipesComponent }, 
         ]),
-    ]
+    ],
+
 })
 export class FilterModule{
 

@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { AuthInterceptorService } from "./services/auth-interceptor-service";
 import { AuthTokenInterceptorService } from "./services/auth-token-interceptor.service";
 import { AuthService } from "./services/auth.service";
+import { DummyService } from "./services/dummy.service";
 import { AuthGuardService } from "./services/guardes/auth-guard.service";
 import { DeactivateGuardService } from "./services/guardes/deactivat-guard.service";
 import { LoggingInterceptorService } from "./services/logging-interceptor-service";

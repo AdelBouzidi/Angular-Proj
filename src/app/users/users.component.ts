@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DummyService } from '../services/dummy.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -9,9 +10,11 @@ import { UserService } from '../services/user.service';
 })
 export class UsersComponent implements OnInit{
   usersData= ['Rama', 'Krishna', 'Leela'];
-  ngOnInit(): void {
+ 
+  constructor(private router: Router,private userService: UserService, private DummyService: DummyService) {    
   }
-  constructor(private router: Router,private userService: UserService) {    
+  ngOnInit(): void {
+    this.DummyService.printLog('Hellow From Users Component');
   }
 
   onCategoriesClick(){

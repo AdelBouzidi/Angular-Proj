@@ -21,6 +21,7 @@ import { PostModule } from './post.module';
 import { AuthModule } from './auth.module';
 import { FilterModule } from './filter.module';
 import { CoreModule } from './core.module';
+import { DummyService } from './services/dummy.service';
 
 // const appRoutes: Routes = [
 //   {path: '', component: HomeComponent}, //localhost;4200/
@@ -93,6 +94,9 @@ import { CoreModule } from './core.module';
     // userResolveService, 
     // UserService
   // ],
+  providers:[
+    DummyService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
